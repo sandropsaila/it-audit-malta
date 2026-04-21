@@ -394,16 +394,21 @@ export default function App() {
   const [source, setSource]     = useState("All");
   const [search, setSearch]     = useState("");
   const [selected, setSelected] = useState(null);
-  
-  const [lastRefresh, setLastRefresh] = useState(LAST_UPDATED);
+
+  const formatStamp = (d) => {
+    const date = d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+    const time = d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    return `${date} · ${time}`;
+  };
+
+  const [lastRefresh, setLastRefresh] = useState(() => formatStamp(new Date()));
 
   const handleRefresh = () => {
     setSearch("");
     setCategory("All");
     setSource("All");
     setSelected(null);
-    
-    setLastRefresh(new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }));
+    setLastRefresh(formatStamp(new Date()));
   };
 
   if (!unlocked) return <PinScreen onUnlock={() => setUnlocked(true)} />;
@@ -435,7 +440,10 @@ export default function App() {
         {/* ── HEADER ── */}
         <header style={s.header}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14 }}>
-            <div style={s.badge}>LIVE RESULTS · {lastRefresh}</div>
+            <div style={s.badge}>
+              <span style={{ display: "block", fontSize: 9, letterSpacing: 2, marginBottom: 2 }}>DATA RETRIEVED</span>
+              <span style={{ display: "block", fontSize: 11, letterSpacing: 1 }}>{lastRefresh}</span>
+            </div>
             <button style={s.refreshBtn} onClick={handleRefresh} title="Refresh results">
               ↺ Refresh
             </button>
