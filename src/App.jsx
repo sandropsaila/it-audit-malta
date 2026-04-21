@@ -297,9 +297,9 @@ const ALL_SOURCES = [
 ];
 
 const CAT_COLORS = {
-  "IT Audit":       { bg: "rgba(59,130,246,0.12)", border: "rgba(59,130,246,0.35)", text: "#60a5fa" },
-  "Internal Audit": { bg: "rgba(168,85,247,0.12)", border: "rgba(168,85,247,0.35)", text: "#c084fc" },
-  "External Audit": { bg: "rgba(16,185,129,0.12)", border: "rgba(16,185,129,0.35)", text: "#34d399" },
+  "IT Audit":       { bg: "rgba(37,99,235,0.08)",  border: "rgba(37,99,235,0.3)",  text: "#1d4ed8" },
+  "Internal Audit": { bg: "rgba(124,58,237,0.08)", border: "rgba(124,58,237,0.3)", text: "#6d28d9" },
+  "External Audit": { bg: "rgba(5,150,105,0.08)",  border: "rgba(5,150,105,0.3)",  text: "#047857" },
 };
 
 export default function App() {
@@ -429,7 +429,7 @@ export default function App() {
                 <div style={s.meta}>
                   <span style={s.mi}>📍 {job.location}</span>
                   <span style={s.mi}>⏱ {job.type}</span>
-                  {job.salary && <span style={{ ...s.mi, color: "#fbbf24" }}>💰 {job.salary}</span>}
+                  {job.salary && <span style={{ ...s.mi, color: "#b45309" }}>💰 {job.salary}</span>}
                   <span style={s.mi}>🗓 {job.posted}</span>
                 </div>
 
@@ -488,47 +488,47 @@ export default function App() {
 }
 
 const s = {
-  root:        { minHeight: "100vh", background: "#0a0e1a", color: "#e2e8f0", fontFamily: "'Courier New',monospace", position: "relative", overflowX: "hidden" },
-  grid:        { position: "fixed", inset: 0, backgroundImage: "linear-gradient(rgba(59,130,246,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.05) 1px,transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none" },
+  root:        { minHeight: "100vh", background: "#ffffff", color: "#1e293b", fontFamily: "'Courier New',monospace", position: "relative", overflowX: "hidden" },
+  grid:        { position: "fixed", inset: 0, backgroundImage: "linear-gradient(rgba(59,130,246,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.06) 1px,transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none" },
   wrap:        { maxWidth: 900, margin: "0 auto", padding: "40px 16px 60px", position: "relative", zIndex: 1 },
   header:      { textAlign: "center", marginBottom: 28 },
-  badge:       { display: "inline-block", background: "rgba(16,185,129,0.15)", border: "1px solid rgba(16,185,129,0.4)", color: "#34d399", padding: "4px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 2, marginBottom: 14 },
-  title:       { fontSize: "clamp(26px,6vw,52px)", fontWeight: 900, letterSpacing: -1, lineHeight: 1.1, margin: "0 0 12px", fontFamily: "Georgia,serif" },
-  accent:      { color: "#3b82f6" },
-  sub:         { color: "#94a3b8", fontSize: 13, lineHeight: 1.7 },
-  malta:       { color: "#f59e0b", fontWeight: 700 },
-  statsBar:    { display: "flex", background: "#0f172a", border: "1px solid #1e293b", borderRadius: 8, overflow: "hidden", marginBottom: 16, cursor: "pointer" },
+  badge:       { display: "inline-block", background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.4)", color: "#059669", padding: "4px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 2, marginBottom: 14 },
+  title:       { fontSize: "clamp(26px,6vw,52px)", fontWeight: 900, letterSpacing: -1, lineHeight: 1.1, margin: "0 0 12px", fontFamily: "Georgia,serif", color: "#0f172a" },
+  accent:      { color: "#2563eb" },
+  sub:         { color: "#64748b", fontSize: 13, lineHeight: 1.7 },
+  malta:       { color: "#d97706", fontWeight: 700 },
+  statsBar:    { display: "flex", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 8, overflow: "hidden", marginBottom: 16, cursor: "pointer", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" },
   stat:        { flex: 1, display: "flex", flexDirection: "column", alignItems: "center", padding: "14px 8px", transition: "background 0.15s" },
   sNum:        { fontSize: "clamp(20px,4vw,30px)", fontWeight: 900, lineHeight: 1 },
-  sLbl:        { fontSize: 9, color: "#64748b", letterSpacing: 0.5, marginTop: 4, textAlign: "center" },
-  sdiv:        { width: 1, background: "#1e293b" },
-  summBox:     { background: "rgba(15,23,42,0.8)", border: "1px solid #1e293b", borderRadius: 6, padding: "12px 16px", fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginBottom: 16 },
-  searchBox:   { width: "100%", boxSizing: "border-box", background: "#0f172a", border: "1px solid #334155", borderRadius: 6, padding: "10px 14px", fontSize: 14, color: "#e2e8f0", fontFamily: "inherit", marginBottom: 12, outline: "none" },
+  sLbl:        { fontSize: 9, color: "#94a3b8", letterSpacing: 0.5, marginTop: 4, textAlign: "center" },
+  sdiv:        { width: 1, background: "#e2e8f0" },
+  summBox:     { background: "#f1f5f9", border: "1px solid #e2e8f0", borderRadius: 6, padding: "12px 16px", fontSize: 13, color: "#475569", lineHeight: 1.8, marginBottom: 16 },
+  searchBox:   { width: "100%", boxSizing: "border-box", background: "#ffffff", border: "1px solid #cbd5e1", borderRadius: 6, padding: "10px 14px", fontSize: 14, color: "#1e293b", fontFamily: "inherit", marginBottom: 12, outline: "none", boxShadow: "0 1px 2px rgba(0,0,0,0.04)" },
   filterRow:   { display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10, alignItems: "center" },
-  filterLabel: { color: "#475569", fontSize: 11, marginRight: 2 },
-  tab:         { background: "transparent", border: "1px solid #1e293b", color: "#64748b", padding: "6px 14px", borderRadius: 4, cursor: "pointer", fontFamily: "inherit", fontSize: 12 },
+  filterLabel: { color: "#94a3b8", fontSize: 11, marginRight: 2 },
+  tab:         { background: "#ffffff", border: "1px solid #e2e8f0", color: "#64748b", padding: "6px 14px", borderRadius: 4, cursor: "pointer", fontFamily: "inherit", fontSize: 12, boxShadow: "0 1px 2px rgba(0,0,0,0.04)" },
   tabSm:       { padding: "4px 10px", fontSize: 11 },
-  tabSmOn:     { background: "rgba(255,255,255,0.06)", border: "1px solid #475569", color: "#cbd5e1" },
-  count:       { color: "#475569", fontSize: 11, marginBottom: 10 },
+  tabSmOn:     { background: "#f1f5f9", border: "1px solid #94a3b8", color: "#1e293b" },
+  count:       { color: "#94a3b8", fontSize: 11, marginBottom: 10 },
   list:        { display: "flex", flexDirection: "column", gap: 10 },
-  card:        { background: "#0f172a", border: "1px solid #1e293b", borderRadius: 8, padding: "14px 16px", cursor: "pointer", transition: "border-color 0.15s, box-shadow 0.15s" },
+  card:        { background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 8, padding: "14px 16px", cursor: "pointer", transition: "border-color 0.15s, box-shadow 0.15s", boxShadow: "0 1px 3px rgba(0,0,0,0.05)" },
   cardTop:     { display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 8 },
   catPill:     { padding: "2px 8px", borderRadius: 3, fontSize: 9, letterSpacing: 1, whiteSpace: "nowrap", flexShrink: 0 },
-  jTitle:      { fontWeight: 700, fontSize: 14, color: "#e2e8f0" },
-  jCo:         { color: "#60a5fa", fontSize: 12, marginTop: 2 },
-  srcTag:      { background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.25)", color: "#a5b4fc", padding: "2px 8px", borderRadius: 3, fontSize: 9, letterSpacing: 0.5, whiteSpace: "nowrap", flexShrink: 0 },
+  jTitle:      { fontWeight: 700, fontSize: 14, color: "#0f172a" },
+  jCo:         { color: "#2563eb", fontSize: 12, marginTop: 2 },
+  srcTag:      { background: "#ede9fe", border: "1px solid #c4b5fd", color: "#7c3aed", padding: "2px 8px", borderRadius: 3, fontSize: 9, letterSpacing: 0.5, whiteSpace: "nowrap", flexShrink: 0 },
   meta:        { display: "flex", gap: 10, flexWrap: "wrap" },
-  mi:          { color: "#64748b", fontSize: 11 },
-  xhint:       { color: "#1e293b", fontSize: 10, marginTop: 8, textAlign: "right" },
-  det:         { marginTop: 12, paddingTop: 12, borderTop: "1px solid #1e293b" },
-  desc:        { color: "#94a3b8", fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" },
+  mi:          { color: "#94a3b8", fontSize: 11 },
+  xhint:       { color: "#cbd5e1", fontSize: 10, marginTop: 8, textAlign: "right" },
+  det:         { marginTop: 12, paddingTop: 12, borderTop: "1px solid #f1f5f9" },
+  desc:        { color: "#475569", fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" },
   skills:      { display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 10 },
   skill:       { padding: "2px 8px", borderRadius: 3, fontSize: 10 },
   link:        { fontSize: 12, textDecoration: "none" },
-  empty:       { textAlign: "center", color: "#475569", padding: "40px 0", fontSize: 13 },
-  legend:      { marginTop: 40, borderTop: "1px solid #1e293b", paddingTop: 20 },
-  legendTitle: { color: "#475569", fontSize: 11, letterSpacing: 2, marginBottom: 12 },
+  empty:       { textAlign: "center", color: "#94a3b8", padding: "40px 0", fontSize: 13 },
+  legend:      { marginTop: 40, borderTop: "1px solid #e2e8f0", paddingTop: 20 },
+  legendTitle: { color: "#94a3b8", fontSize: 11, letterSpacing: 2, marginBottom: 12 },
   legendGrid:  { display: "flex", flexWrap: "wrap", gap: 8 },
-  srcLink:     { color: "#334155", fontSize: 11, textDecoration: "none", background: "#0f172a", border: "1px solid #1e293b", padding: "4px 10px", borderRadius: 3 },
-  footer:      { marginTop: 24, textAlign: "center", color: "#1e293b", fontSize: 10 },
+  srcLink:     { color: "#64748b", fontSize: 11, textDecoration: "none", background: "#f8fafc", border: "1px solid #e2e8f0", padding: "4px 10px", borderRadius: 3 },
+  footer:      { marginTop: 24, textAlign: "center", color: "#cbd5e1", fontSize: 10 },
 };
