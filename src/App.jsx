@@ -12,7 +12,7 @@ async function hashPin(pin) {
 }
 
 // SHA-256 of "1122"
-const PIN_HASH = "6f4b6612125fb3a0daecd2799dfd6c9c299424fd920f9b308110a2c1fbd8f443";
+const PIN_HASH = "b3282a2f2a28757b3a18ab833de16a9c54518c0b0cf493e3f0a7cf09386f326a";
 
 function PinScreen({ onUnlock }) {
   const [digits, setDigits]   = useState([]);
