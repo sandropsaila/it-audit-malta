@@ -83,7 +83,7 @@ const p = {
   dots:     { display: "flex", gap: 20 },
   dot:      { width: 16, height: 16, borderRadius: "50%", border: "2px solid #e2e8f0", transition: "background 0.15s" },
   keypad:   { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, width: 260 },
-  key:      { background: "#f1f5f9", border: "none", borderRadius: 14, padding: "22px 0", fontSize: 24, fontWeight: 700, color: "#0f172a", cursor: "pointer", fontFamily: "Georgia, serif" },
+  key:      { background: "#cbd5e1", border: "none", borderRadius: 14, padding: "22px 0", fontSize: 24, fontWeight: 700, color: "#0f172a", cursor: "pointer", fontFamily: "Georgia, serif" },
   keyDel:   { background: "#fef2f2", color: "#dc2626", fontSize: 20 },
   err:      { color: "#dc2626", fontSize: 12, fontFamily: "'Courier New', monospace", margin: 0 },
 };
