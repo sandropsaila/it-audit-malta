@@ -364,7 +364,7 @@ export default function App() {
 
         {/* ── MARKET SUMMARY ── */}
         <div style={s.summBox}>
-          <strong style={{ color: "#e2e8f0" }}>📊 Market Snapshot:</strong> Malta's audit job market is active across all levels in April 2026.
+          <strong style={{ color: "#0f172a" }}>📊 Market Snapshot:</strong> Malta's audit job market is active across all levels in April 2026.
           <strong style={{ color: "#60a5fa" }}> IT Audit</strong> demand is led by Deloitte, Forvis Mazars and SpotOn (iGaming & fintech).
           <strong style={{ color: "#c084fc" }}> Internal Audit</strong> roles are open at MFSA, Vista Global, BDO and a crypto/MiCA fintech (€60–80k).
           <strong style={{ color: "#34d399" }}> External Audit</strong> vacancies span entry to senior management (€20k–€100k) across EY, DFK, GCB, Broadwing and Konnekt.
@@ -495,21 +495,21 @@ const s = {
   badge:       { display: "inline-block", background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.4)", color: "#059669", padding: "4px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 2, marginBottom: 14 },
   title:       { fontSize: "clamp(26px,6vw,52px)", fontWeight: 900, letterSpacing: -1, lineHeight: 1.1, margin: "0 0 12px", fontFamily: "Georgia,serif", color: "#0f172a" },
   accent:      { color: "#2563eb" },
-  sub:         { color: "#64748b", fontSize: 13, lineHeight: 1.7 },
+  sub:         { color: "#334155", fontSize: 13, lineHeight: 1.7 },
   malta:       { color: "#d97706", fontWeight: 700 },
   statsBar:    { display: "flex", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 8, overflow: "hidden", marginBottom: 16, cursor: "pointer", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" },
   stat:        { flex: 1, display: "flex", flexDirection: "column", alignItems: "center", padding: "14px 8px", transition: "background 0.15s" },
   sNum:        { fontSize: "clamp(20px,4vw,30px)", fontWeight: 900, lineHeight: 1 },
-  sLbl:        { fontSize: 9, color: "#94a3b8", letterSpacing: 0.5, marginTop: 4, textAlign: "center" },
+  sLbl:        { fontSize: 9, color: "#475569", letterSpacing: 0.5, marginTop: 4, textAlign: "center" },
   sdiv:        { width: 1, background: "#e2e8f0" },
-  summBox:     { background: "#f1f5f9", border: "1px solid #e2e8f0", borderRadius: 6, padding: "12px 16px", fontSize: 13, color: "#475569", lineHeight: 1.8, marginBottom: 16 },
+  summBox:     { background: "#f1f5f9", border: "1px solid #e2e8f0", borderRadius: 6, padding: "12px 16px", fontSize: 13, color: "#334155", lineHeight: 1.8, marginBottom: 16 },
   searchBox:   { width: "100%", boxSizing: "border-box", background: "#ffffff", border: "1px solid #cbd5e1", borderRadius: 6, padding: "10px 14px", fontSize: 14, color: "#1e293b", fontFamily: "inherit", marginBottom: 12, outline: "none", boxShadow: "0 1px 2px rgba(0,0,0,0.04)" },
   filterRow:   { display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10, alignItems: "center" },
-  filterLabel: { color: "#94a3b8", fontSize: 11, marginRight: 2 },
-  tab:         { background: "#ffffff", border: "1px solid #e2e8f0", color: "#64748b", padding: "6px 14px", borderRadius: 4, cursor: "pointer", fontFamily: "inherit", fontSize: 12, boxShadow: "0 1px 2px rgba(0,0,0,0.04)" },
+  filterLabel: { color: "#64748b", fontSize: 11, marginRight: 2 },
+  tab:         { background: "#ffffff", border: "1px solid #e2e8f0", color: "#374151", padding: "6px 14px", borderRadius: 4, cursor: "pointer", fontFamily: "inherit", fontSize: 12, boxShadow: "0 1px 2px rgba(0,0,0,0.04)" },
   tabSm:       { padding: "4px 10px", fontSize: 11 },
   tabSmOn:     { background: "#f1f5f9", border: "1px solid #94a3b8", color: "#1e293b" },
-  count:       { color: "#94a3b8", fontSize: 11, marginBottom: 10 },
+  count:       { color: "#64748b", fontSize: 11, marginBottom: 10 },
   list:        { display: "flex", flexDirection: "column", gap: 10 },
   card:        { background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 8, padding: "14px 16px", cursor: "pointer", transition: "border-color 0.15s, box-shadow 0.15s", boxShadow: "0 1px 3px rgba(0,0,0,0.05)" },
   cardTop:     { display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 8 },
@@ -518,17 +518,17 @@ const s = {
   jCo:         { color: "#2563eb", fontSize: 12, marginTop: 2 },
   srcTag:      { background: "#ede9fe", border: "1px solid #c4b5fd", color: "#7c3aed", padding: "2px 8px", borderRadius: 3, fontSize: 9, letterSpacing: 0.5, whiteSpace: "nowrap", flexShrink: 0 },
   meta:        { display: "flex", gap: 10, flexWrap: "wrap" },
-  mi:          { color: "#94a3b8", fontSize: 11 },
-  xhint:       { color: "#cbd5e1", fontSize: 10, marginTop: 8, textAlign: "right" },
+  mi:          { color: "#64748b", fontSize: 11 },
+  xhint:       { color: "#64748b", fontSize: 10, marginTop: 8, textAlign: "right" },
   det:         { marginTop: 12, paddingTop: 12, borderTop: "1px solid #f1f5f9" },
-  desc:        { color: "#475569", fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" },
+  desc:        { color: "#1e293b", fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" },
   skills:      { display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 10 },
   skill:       { padding: "2px 8px", borderRadius: 3, fontSize: 10 },
   link:        { fontSize: 12, textDecoration: "none" },
-  empty:       { textAlign: "center", color: "#94a3b8", padding: "40px 0", fontSize: 13 },
+  empty:       { textAlign: "center", color: "#64748b", padding: "40px 0", fontSize: 13 },
   legend:      { marginTop: 40, borderTop: "1px solid #e2e8f0", paddingTop: 20 },
-  legendTitle: { color: "#94a3b8", fontSize: 11, letterSpacing: 2, marginBottom: 12 },
+  legendTitle: { color: "#64748b", fontSize: 11, letterSpacing: 2, marginBottom: 12 },
   legendGrid:  { display: "flex", flexWrap: "wrap", gap: 8 },
-  srcLink:     { color: "#64748b", fontSize: 11, textDecoration: "none", background: "#f8fafc", border: "1px solid #e2e8f0", padding: "4px 10px", borderRadius: 3 },
-  footer:      { marginTop: 24, textAlign: "center", color: "#cbd5e1", fontSize: 10 },
+  srcLink:     { color: "#374151", fontSize: 11, textDecoration: "none", background: "#f8fafc", border: "1px solid #e2e8f0", padding: "4px 10px", borderRadius: 3 },
+  footer:      { marginTop: 24, textAlign: "center", color: "#64748b", fontSize: 10 },
 };
