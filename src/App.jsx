@@ -44,32 +44,27 @@ function PinScreen({ onUnlock }) {
 
   return (
     <div style={p.overlay}>
-      <div style={p.box}>
-        <div style={p.logo}>🇲🇹</div>
-        <h2 style={p.title}>IT & Internal Audit<br/>Malta Vacancies</h2>
-        <p style={p.sub}>Enter PIN to access</p>
-
-        {/* Dots */}
-        <div style={{ ...p.dots, animation: shake ? "shake 0.4s ease" : "none" }}>
-          {[0,1,2,3].map((i) => (
-            <div key={i} style={{ ...p.dot, background: digits.length > i ? "#2563eb" : "#e2e8f0" }} />
-          ))}
-        </div>
-
-        {/* Keypad */}
-        <div style={p.keypad}>
-          {keys.map((k, i) => (
-            k === null ? <div key={i} /> :
-            k === "⌫" ? (
-              <button key={i} style={{ ...p.key, ...p.keyDel }} onClick={handleDelete}>⌫</button>
-            ) : (
-              <button key={i} style={p.key} onClick={() => handleDigit(k)}>{k}</button>
-            )
-          ))}
-        </div>
-
-        {shake && <p style={p.err}>Incorrect PIN. Try again.</p>}
+      {/* Dots */}
+      <div style={{ ...p.dots, animation: shake ? "shake 0.4s ease" : "none" }}>
+        {[0,1,2,3].map((i) => (
+          <div key={i} style={{ ...p.dot, background: digits.length > i ? "#2563eb" : "#e2e8f0" }} />
+        ))}
       </div>
+
+      {/* Keypad */}
+      <div style={p.keypad}>
+        {keys.map((k, i) => (
+          k === null ? <div key={i} /> :
+          k === "⌫" ? (
+            <button key={i} style={{ ...p.key, ...p.keyDel }} onClick={handleDelete}>⌫</button>
+          ) : (
+            <button key={i} style={p.key} onClick={() => handleDigit(k)}>{k}</button>
+          )
+        ))}
+      </div>
+
+      {shake && <p style={p.err}>Incorrect PIN</p>}
+
       <style>{`
         @keyframes shake {
           0%,100%{transform:translateX(0)}
@@ -84,17 +79,13 @@ function PinScreen({ onUnlock }) {
 }
 
 const p = {
-  overlay:  { minHeight: "100vh", background: "#f8fafc", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Georgia, serif" },
-  box:      { background: "#ffffff", borderRadius: 16, padding: "40px 32px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center", width: "100%", maxWidth: 340 },
-  logo:     { fontSize: 40, marginBottom: 12 },
-  title:    { fontSize: 20, fontWeight: 900, color: "#0f172a", margin: "0 0 6px", lineHeight: 1.3 },
-  sub:      { color: "#64748b", fontSize: 13, margin: "0 0 28px", fontFamily: "'Courier New', monospace" },
-  dots:     { display: "flex", gap: 16, justifyContent: "center", marginBottom: 28 },
-  dot:      { width: 14, height: 14, borderRadius: "50%", border: "2px solid #e2e8f0", transition: "background 0.15s" },
-  keypad:   { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, maxWidth: 240, margin: "0 auto" },
-  key:      { background: "#f1f5f9", border: "1px solid #e2e8f0", borderRadius: 12, padding: "18px 0", fontSize: 22, fontWeight: 700, color: "#0f172a", cursor: "pointer", fontFamily: "Georgia, serif", transition: "background 0.1s" },
-  keyDel:   { background: "#fef2f2", border: "1px solid #fecaca", color: "#dc2626", fontSize: 18 },
-  err:      { color: "#dc2626", fontSize: 12, marginTop: 16, fontFamily: "'Courier New', monospace" },
+  overlay:  { minHeight: "100vh", background: "#ffffff", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 28 },
+  dots:     { display: "flex", gap: 20 },
+  dot:      { width: 16, height: 16, borderRadius: "50%", border: "2px solid #e2e8f0", transition: "background 0.15s" },
+  keypad:   { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, width: 260 },
+  key:      { background: "#f1f5f9", border: "none", borderRadius: 14, padding: "22px 0", fontSize: 24, fontWeight: 700, color: "#0f172a", cursor: "pointer", fontFamily: "Georgia, serif" },
+  keyDel:   { background: "#fef2f2", color: "#dc2626", fontSize: 20 },
+  err:      { color: "#dc2626", fontSize: 12, fontFamily: "'Courier New', monospace", margin: 0 },
 };
 
 const JOBS = [
