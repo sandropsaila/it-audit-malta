@@ -2,6 +2,101 @@ import { useState } from "react";
 
 const LAST_UPDATED = "21 April 2026";
 
+// Password stored as SHA-256 hash of "1122" — never stored as plain text
+
+async function hashPin(pin) {
+  const msgBuffer = new TextEncoder().encode(pin);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+// SHA-256 of "1122"
+const PIN_HASH = "6f4b6612125fb3a0daecd2799dfd6c9c299424fd920f9b308110a2c1fbd8f443";
+
+function PinScreen({ onUnlock }) {
+  const [digits, setDigits]   = useState([]);
+  const [shake, setShake]     = useState(false);
+  const [checking, setChecking] = useState(false);
+
+  const handleDigit = async (d) => {
+    if (digits.length >= 4 || checking) return;
+    const next = [...digits, d];
+    setDigits(next);
+    if (next.length === 4) {
+      setChecking(true);
+      const hash = await hashPin(next.join(""));
+      if (hash === PIN_HASH) {
+        onUnlock();
+      } else {
+        setShake(true);
+        setTimeout(() => { setDigits([]); setShake(false); setChecking(false); }, 600);
+      }
+    }
+  };
+
+  const handleDelete = () => {
+    if (checking) return;
+    setDigits((d) => d.slice(0, -1));
+  };
+
+  const keys = [1,2,3,4,5,6,7,8,9,null,0,"⌫"];
+
+  return (
+    <div style={p.overlay}>
+      <div style={p.box}>
+        <div style={p.logo}>🇲🇹</div>
+        <h2 style={p.title}>IT & Internal Audit<br/>Malta Vacancies</h2>
+        <p style={p.sub}>Enter PIN to access</p>
+
+        {/* Dots */}
+        <div style={{ ...p.dots, animation: shake ? "shake 0.4s ease" : "none" }}>
+          {[0,1,2,3].map((i) => (
+            <div key={i} style={{ ...p.dot, background: digits.length > i ? "#2563eb" : "#e2e8f0" }} />
+          ))}
+        </div>
+
+        {/* Keypad */}
+        <div style={p.keypad}>
+          {keys.map((k, i) => (
+            k === null ? <div key={i} /> :
+            k === "⌫" ? (
+              <button key={i} style={{ ...p.key, ...p.keyDel }} onClick={handleDelete}>⌫</button>
+            ) : (
+              <button key={i} style={p.key} onClick={() => handleDigit(k)}>{k}</button>
+            )
+          ))}
+        </div>
+
+        {shake && <p style={p.err}>Incorrect PIN. Try again.</p>}
+      </div>
+      <style>{`
+        @keyframes shake {
+          0%,100%{transform:translateX(0)}
+          20%{transform:translateX(-8px)}
+          40%{transform:translateX(8px)}
+          60%{transform:translateX(-6px)}
+          80%{transform:translateX(6px)}
+        }
+      `}</style>
+    </div>
+  );
+}
+
+const p = {
+  overlay:  { minHeight: "100vh", background: "#f8fafc", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Georgia, serif" },
+  box:      { background: "#ffffff", borderRadius: 16, padding: "40px 32px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center", width: "100%", maxWidth: 340 },
+  logo:     { fontSize: 40, marginBottom: 12 },
+  title:    { fontSize: 20, fontWeight: 900, color: "#0f172a", margin: "0 0 6px", lineHeight: 1.3 },
+  sub:      { color: "#64748b", fontSize: 13, margin: "0 0 28px", fontFamily: "'Courier New', monospace" },
+  dots:     { display: "flex", gap: 16, justifyContent: "center", marginBottom: 28 },
+  dot:      { width: 14, height: 14, borderRadius: "50%", border: "2px solid #e2e8f0", transition: "background 0.15s" },
+  keypad:   { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, maxWidth: 240, margin: "0 auto" },
+  key:      { background: "#f1f5f9", border: "1px solid #e2e8f0", borderRadius: 12, padding: "18px 0", fontSize: 22, fontWeight: 700, color: "#0f172a", cursor: "pointer", fontFamily: "Georgia, serif", transition: "background 0.1s" },
+  keyDel:   { background: "#fef2f2", border: "1px solid #fecaca", color: "#dc2626", fontSize: 18 },
+  err:      { color: "#dc2626", fontSize: 12, marginTop: 16, fontFamily: "'Courier New', monospace" },
+};
+
 const JOBS = [
   // ── IT AUDIT ──────────────────────────────────────────────────────────────
   {
@@ -303,10 +398,24 @@ const CAT_COLORS = {
 };
 
 export default function App() {
+  const [unlocked, setUnlocked] = useState(false);
   const [category, setCategory] = useState("All");
   const [source, setSource]     = useState("All");
   const [search, setSearch]     = useState("");
   const [selected, setSelected] = useState(null);
+  
+  const [lastRefresh, setLastRefresh] = useState(LAST_UPDATED);
+
+  const handleRefresh = () => {
+    setSearch("");
+    setCategory("All");
+    setSource("All");
+    setSelected(null);
+    
+    setLastRefresh(new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }));
+  };
+
+  if (!unlocked) return <PinScreen onUnlock={() => setUnlocked(true)} />;
 
   const filtered = JOBS.filter((j) => {
     const matchCat = category === "All" || j.category === category;
@@ -334,7 +443,12 @@ export default function App() {
 
         {/* ── HEADER ── */}
         <header style={s.header}>
-          <div style={s.badge}>LIVE RESULTS · {LAST_UPDATED}</div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14 }}>
+            <div style={s.badge}>LIVE RESULTS · {lastRefresh}</div>
+            <button style={s.refreshBtn} onClick={handleRefresh} title="Refresh results">
+              ↺ Refresh
+            </button>
+          </div>
           <h1 style={s.title}><span style={s.accent}>IT & INTERNAL AUDIT</span><br />MALTA VACANCIES</h1>
           <p style={s.sub}>
             {JOBS.length} vacancies across 10+ sources including LinkedIn, Keepmeposted,
@@ -365,9 +479,9 @@ export default function App() {
         {/* ── MARKET SUMMARY ── */}
         <div style={s.summBox}>
           <strong style={{ color: "#0f172a" }}>📊 Market Snapshot:</strong> Malta's audit job market is active across all levels in April 2026.
-          <strong style={{ color: "#60a5fa" }}> IT Audit</strong> demand is led by Deloitte, Forvis Mazars and SpotOn (iGaming & fintech).
-          <strong style={{ color: "#c084fc" }}> Internal Audit</strong> roles are open at MFSA, Vista Global, BDO and a crypto/MiCA fintech (€60–80k).
-          <strong style={{ color: "#34d399" }}> External Audit</strong> vacancies span entry to senior management (€20k–€100k) across EY, DFK, GCB, Broadwing and Konnekt.
+          <strong style={{ color: "#1d4ed8" }}> IT Audit</strong> demand is led by Deloitte, Forvis Mazars and SpotOn (iGaming & fintech).
+          <strong style={{ color: "#6d28d9" }}> Internal Audit</strong> roles are open at MFSA, Vista Global, BDO and a crypto/MiCA fintech (€60–80k).
+          <strong style={{ color: "#047857" }}> External Audit</strong> vacancies span entry to senior management (€20k–€100k) across EY, DFK, GCB, Broadwing and Konnekt.
         </div>
 
         {/* ── SEARCH ── */}
@@ -492,7 +606,8 @@ const s = {
   grid:        { position: "fixed", inset: 0, backgroundImage: "linear-gradient(rgba(59,130,246,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.06) 1px,transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none" },
   wrap:        { maxWidth: 900, margin: "0 auto", padding: "40px 16px 60px", position: "relative", zIndex: 1 },
   header:      { textAlign: "center", marginBottom: 28 },
-  badge:       { display: "inline-block", background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.4)", color: "#059669", padding: "4px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 2, marginBottom: 14 },
+  badge:       { display: "inline-block", background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.4)", color: "#059669", padding: "4px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 2 },
+  refreshBtn:  { background: "#2563eb", border: "none", color: "#ffffff", padding: "5px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 1, cursor: "pointer", fontFamily: "inherit", fontWeight: 700 },
   title:       { fontSize: "clamp(26px,6vw,52px)", fontWeight: 900, letterSpacing: -1, lineHeight: 1.1, margin: "0 0 12px", fontFamily: "Georgia,serif", color: "#0f172a" },
   accent:      { color: "#2563eb" },
   sub:         { color: "#334155", fontSize: 13, lineHeight: 1.7 },
