@@ -394,6 +394,8 @@ export default function App() {
   const [source, setSource]     = useState("All");
   const [search, setSearch]     = useState("");
   const [selected, setSelected] = useState(null);
+  const [sortBy, setSortBy]     = useState("default");
+  const [showInfo, setShowInfo] = useState(false);
 
   const formatStamp = (d) => {
     const date = d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
@@ -408,12 +410,13 @@ export default function App() {
     setCategory("All");
     setSource("All");
     setSelected(null);
+    setSortBy("default");
     setLastRefresh(formatStamp(new Date()));
   };
 
   if (!unlocked) return <PinScreen onUnlock={() => setUnlocked(true)} />;
 
-  const filtered = JOBS.filter((j) => {
+  let filtered = JOBS.filter((j) => {
     const matchCat = category === "All" || j.category === category;
     const matchSrc = source === "All" || j.source === source;
     const q = search.toLowerCase();
@@ -422,15 +425,50 @@ export default function App() {
       j.title.toLowerCase().includes(q) ||
       j.company.toLowerCase().includes(q) ||
       j.location.toLowerCase().includes(q) ||
-      j.skills.some((s) => s.toLowerCase().includes(q));
+      j.skills.some((sk) => sk.toLowerCase().includes(q));
     return matchCat && matchSrc && matchQ;
   });
+
+  // Sort
+  if (sortBy === "salary") {
+    filtered = [...filtered].sort((a, b) => {
+      const getMax = (s) => s ? parseInt(s.replace(/[^0-9]/g, "").slice(-6)) : 0;
+      return getMax(b.salary) - getMax(a.salary);
+    });
+  } else if (sortBy === "company") {
+    filtered = [...filtered].sort((a, b) => a.company.localeCompare(b.company));
+  } else if (sortBy === "category") {
+    filtered = [...filtered].sort((a, b) => a.category.localeCompare(b.category));
+  }
 
   const counts = {
     "IT Audit":       JOBS.filter((j) => j.category === "IT Audit").length,
     "Internal Audit": JOBS.filter((j) => j.category === "Internal Audit").length,
     "External Audit": JOBS.filter((j) => j.category === "External Audit").length,
   };
+
+  const withSalary = JOBS.filter(j => j.salary).length;
+
+  // Live job board deep links
+  const LIVE_LINKS = [
+    { name: "LinkedIn – IT Auditor Malta",      url: "https://mt.linkedin.com/jobs/it-auditor-jobs" },
+    { name: "LinkedIn – Internal Audit Malta",  url: "https://mt.linkedin.com/jobs/internal-audit-jobs" },
+    { name: "ACCA Careers – Malta Audit",       url: "https://jobs.accaglobal.com/jobs/malta/audit/" },
+    { name: "Keepmeposted – Audit",             url: "https://keepmeposted.com.mt/jobs/search?q=audit" },
+    { name: "Jobsinmalta – Audit",              url: "https://jobsinmalta.com/audit-jobs" },
+    { name: "Jobsinmalta – Internal Audit",     url: "https://jobsinmalta.com/internal-audit-jobs" },
+    { name: "Findajob.mt – IT Audit",           url: "https://findajob.mt/jobs/sectors/it-software/" },
+    { name: "Jobhound.mt – Audit",              url: "https://jobhound.mt" },
+    { name: "Muovo – Audit",                    url: "https://muovo.eu/" },
+    { name: "Jobsplus – Vacancies",             url: "https://jobsplus.gov.mt/job-seekers-mt-en-gb/find-a-job" },
+    { name: "MFSA Careers",                     url: "https://careers.mfsa.mt" },
+    { name: "EY Malta Careers",                 url: "https://www.ey.com/en_mt/careers" },
+    { name: "Deloitte Malta Careers",           url: "https://www2.deloitte.com/mt/en/careers.html" },
+    { name: "KPMG Malta Careers",               url: "https://home.kpmg/mt/en/home/careers.html" },
+    { name: "BDO Malta Careers",               url: "https://www.bdo.com.mt/en-gb/careers" },
+    { name: "Forvis Mazars Malta",              url: "https://forvismazars.com/mt/en/join-us" },
+    { name: "Grant Thornton Malta",             url: "https://www.grantthornton.com.mt/careers/" },
+  ];
 
   return (
     <div style={s.root}>
@@ -439,22 +477,62 @@ export default function App() {
 
         {/* ── HEADER ── */}
         <header style={s.header}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14, flexWrap: "wrap" }}>
             <div style={s.badge}>
               <span style={{ display: "block", fontSize: 9, letterSpacing: 2, marginBottom: 2 }}>DATA RETRIEVED</span>
               <span style={{ display: "block", fontSize: 11, letterSpacing: 1 }}>{lastRefresh}</span>
             </div>
-            <button style={s.refreshBtn} onClick={handleRefresh} title="Refresh results">
-              ↺ Refresh
+            <button style={s.refreshBtn} onClick={handleRefresh} title="Refresh results">↺ Refresh</button>
+            <button style={s.infoBtn} onClick={() => setShowInfo(!showInfo)} title="Data sources info">
+              {showInfo ? "✕ Close" : "ℹ Sources & Tips"}
             </button>
           </div>
           <h1 style={s.title}><span style={s.accent}>IT & INTERNAL AUDIT</span><br />MALTA VACANCIES</h1>
           <p style={s.sub}>
-            {JOBS.length} vacancies across 10+ sources including LinkedIn, Keepmeposted,
-            Jobsinmalta, Findajob.mt, Jobhound, Muovo, Jobsplus & firm career pages in{" "}
+            {JOBS.length} vacancies · {withSalary} with salary · across 10+ sources in{" "}
             <span style={s.malta}>🇲🇹 Malta</span>
           </p>
         </header>
+
+        {/* ── INFO PANEL ── */}
+        {showInfo && (
+          <div style={s.infoPanel}>
+            <h3 style={s.infoTitle}>📡 How this data is collected & how to get more</h3>
+            <div style={s.infoGrid}>
+              <div style={s.infoBlock}>
+                <div style={s.infoBlockTitle}>✅ What works now</div>
+                <p style={s.infoText}>Jobs are manually curated from LinkedIn, Keepmeposted, Jobsinmalta, Findajob.mt, Jobhound, Muovo, Jobsplus, MFSA, BDO, EY, Deloitte & Forvis Mazars. Press <strong>Refresh</strong> to reset filters and record the retrieval time.</p>
+              </div>
+              <div style={s.infoBlock}>
+                <div style={s.infoBlockTitle}>⚠️ No public APIs available</div>
+                <p style={s.infoText}>None of the Malta job boards (Keepmeposted, Jobsinmalta, Jobsplus, Muovo, Findajob.mt) offer a public API or RSS feed. ACCA Careers is the only exception with a live Malta audit feed.</p>
+              </div>
+              <div style={s.infoBlock}>
+                <div style={s.infoBlockTitle}>🔔 Set up job alerts</div>
+                <p style={s.infoText}>The best way to get live data: set up email job alerts on LinkedIn, Keepmeposted and Jobsinmalta for "IT Audit Malta" and "Internal Auditor Malta". You'll receive new listings the moment they're posted.</p>
+              </div>
+              <div style={s.infoBlock}>
+                <div style={s.infoBlockTitle}>🔗 LinkedIn Official API</div>
+                <p style={s.infoText}>LinkedIn offers a Job Search API via their developer programme. Requires company/partner approval. Apply at <a href="https://developer.linkedin.com" target="_blank" rel="noreferrer" style={s.infoLink}>developer.linkedin.com</a>.</p>
+              </div>
+              <div style={s.infoBlock}>
+                <div style={s.infoBlockTitle}>📋 ACCA Live Feed</div>
+                <p style={s.infoText}>ACCA Careers has a live Malta audit job feed — the only public source with real-time data. Click the link below to view it directly.</p>
+              </div>
+              <div style={s.infoBlock}>
+                <div style={s.infoBlockTitle}>🔄 Keep data fresh</div>
+                <p style={s.infoText}>Request a data update anytime — new vacancies are searched across all sources and the list is refreshed. Aim to update weekly for best coverage.</p>
+              </div>
+            </div>
+
+            <div style={s.infoBlockTitle}>🔗 Live job board links — check these directly for real-time listings</div>
+            <div style={s.liveLinksGrid}>
+              {LIVE_LINKS.map((l) => (
+                <a key={l.name} href={l.url} target="_blank" rel="noreferrer" style={s.liveLink}>{l.name} ↗</a>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ── STATS ── */}
         <div style={s.statsBar}>
@@ -517,6 +595,17 @@ export default function App() {
         </div>
 
         <div style={s.count}>{filtered.length} result{filtered.length !== 1 ? "s" : ""}</div>
+
+        {/* ── SORT ── */}
+        <div style={{ ...s.filterRow, marginBottom: 14 }}>
+          <span style={s.filterLabel}>Sort:</span>
+          {[["default","Default"],["salary","Salary ↓"],["company","Company A–Z"],["category","Category"]].map(([val, label]) => (
+            <button key={val}
+              style={{ ...s.tab, ...s.tabSm, ...(sortBy === val ? s.tabSmOn : {}) }}
+              onClick={() => setSortBy(val)}
+            >{label}</button>
+          ))}
+        </div>
 
         {/* ── JOB CARDS ── */}
         <div style={s.list}>
@@ -607,6 +696,16 @@ const s = {
   header:      { textAlign: "center", marginBottom: 28 },
   badge:       { display: "inline-block", background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.5)", color: "#047857", padding: "4px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 2 },
   refreshBtn:  { background: "#2563eb", border: "none", color: "#ffffff", padding: "5px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 1, cursor: "pointer", fontFamily: "inherit", fontWeight: 700 },
+  infoBtn:     { background: "#475569", border: "none", color: "#ffffff", padding: "5px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 1, cursor: "pointer", fontFamily: "inherit", fontWeight: 700 },
+  infoPanel:   { background: "#ffffff", border: "1px solid #cbd5e1", borderRadius: 8, padding: "20px", marginBottom: 20, boxShadow: "0 2px 8px rgba(0,0,0,0.06)" },
+  infoTitle:   { fontSize: 14, fontWeight: 700, color: "#0f172a", margin: "0 0 16px" },
+  infoGrid:    { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12, marginBottom: 16 },
+  infoBlock:   { background: "#f1f5f9", borderRadius: 6, padding: "12px 14px" },
+  infoBlockTitle: { fontSize: 12, fontWeight: 700, color: "#1e293b", marginBottom: 6 },
+  infoText:    { fontSize: 11, color: "#475569", lineHeight: 1.6, margin: 0 },
+  infoLink:    { color: "#2563eb", textDecoration: "none" },
+  liveLinksGrid: { display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10 },
+  liveLink:    { color: "#1d4ed8", fontSize: 11, textDecoration: "none", background: "#eff6ff", border: "1px solid #bfdbfe", padding: "4px 10px", borderRadius: 3, fontWeight: 600 },
   title:       { fontSize: "clamp(26px,6vw,52px)", fontWeight: 900, letterSpacing: -1, lineHeight: 1.1, margin: "0 0 12px", fontFamily: "Georgia,serif", color: "#0f172a" },
   accent:      { color: "#2563eb" },
   sub:         { color: "#334155", fontSize: 13, lineHeight: 1.7 },
