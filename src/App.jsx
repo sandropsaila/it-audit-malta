@@ -83,9 +83,9 @@ const p = {
   dots:     { display: "flex", gap: 20 },
   dot:      { width: 16, height: 16, borderRadius: "50%", border: "2px solid #e2e8f0", transition: "background 0.15s" },
   keypad:   { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, width: 260 },
-  key:      { background: "#cbd5e1", border: "none", borderRadius: 14, padding: "22px 0", fontSize: 24, fontWeight: 700, color: "#0f172a", cursor: "pointer", fontFamily: "Georgia, serif" },
+  key:      { background: "#cbd5e1", border: "none", borderRadius: 14, padding: "22px 0", fontSize: 24, fontWeight: 700, color: "#0f172a", cursor: "pointer", fontFamily: "'Plus Jakarta Sans', sans-serif" },
   keyDel:   { background: "#fef2f2", color: "#dc2626", fontSize: 20 },
-  err:      { color: "#dc2626", fontSize: 12, fontFamily: "'Courier New', monospace", margin: 0 },
+  err:      { color: "#dc2626", fontSize: 12, fontFamily: "'Plus Jakarta Sans', sans-serif", margin: 0 },
 };
 
 const JOBS = [
@@ -969,7 +969,7 @@ export default function App() {
 }
 
 const s = {
-  root:        { minHeight: "100vh", background: "#f1f5f9", color: "#1e293b", fontFamily: "'Courier New',monospace", position: "relative", overflowX: "hidden" },
+  root:        { minHeight: "100vh", background: "#f1f5f9", color: "#1e293b", fontFamily: "'Plus Jakarta Sans', sans-serif", position: "relative", overflowX: "hidden" },
   grid:        { position: "fixed", inset: 0, backgroundImage: "linear-gradient(rgba(59,130,246,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.07) 1px,transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none" },
   wrap:        { maxWidth: 900, margin: "0 auto", padding: "40px 16px 60px", position: "relative", zIndex: 1 },
   header:      { textAlign: "center", marginBottom: 28 },
@@ -985,7 +985,7 @@ const s = {
   infoLink:    { color: "#2563eb", textDecoration: "none" },
   liveLinksGrid: { display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10 },
   liveLink:    { color: "#1d4ed8", fontSize: 11, textDecoration: "none", background: "#eff6ff", border: "1px solid #bfdbfe", padding: "4px 10px", borderRadius: 3, fontWeight: 600 },
-  title:       { fontSize: "clamp(26px,6vw,52px)", fontWeight: 900, letterSpacing: -1, lineHeight: 1.1, margin: "0 0 12px", fontFamily: "Georgia,serif", color: "#0f172a" },
+  title:       { fontSize: "clamp(26px,6vw,52px)", fontWeight: 900, letterSpacing: -1, lineHeight: 1.1, margin: "0 0 12px", fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#0f172a" },
   accent:      { color: "#2563eb" },
   sub:         { color: "#334155", fontSize: 13, lineHeight: 1.7 },
   malta:       { color: "#d97706", fontWeight: 700 },
