@@ -89,6 +89,38 @@ const p = {
 };
 
 const JOBS = [
+  // ══════════════════════════════════════════════════════════════════════════
+  // SEARCH STRATEGY — HOW THIS DATA IS COLLECTED
+  // To maximise coverage, searches are run across ALL of these query strings:
+  //
+  // ROLE SEARCHES (LinkedIn, Google, job boards):
+  //   "IT Auditor Malta"          "IT Audit Malta"
+  //   "IT Audit Manager Malta"    "Senior IT Auditor Malta"
+  //   "IT Internal Auditor Malta" "Information Systems Auditor Malta"
+  //   "IS Auditor Malta"          "CISA Malta"
+  //
+  // EXTENDED ROLE SEARCHES (broader net):
+  //   "IT Controls Malta"         "IT Risk Malta"
+  //   "IT Governance Malta"       "IT Compliance Malta"
+  //   "GRC Malta"                 "Technology Risk Malta"
+  //   "Cybersecurity Audit Malta" "IT Assurance Malta"
+  //   "SOX Malta"                 "GITC Malta"
+  //
+  // COMPANY-SPECIFIC SEARCHES (each firm searched individually):
+  //   "Deloitte Malta jobs"       "KPMG Malta IT audit"
+  //   "PwC Malta jobs"            "EY Malta jobs"
+  //   "BDO Malta jobs"            "Forvis Mazars Malta jobs"
+  //   "Grant Thornton Malta jobs" "Shift4 Malta jobs"
+  //   "MFSA careers Malta"        "Vista Global Malta jobs"
+  //
+  // JOB BOARD DIRECT SEARCHES:
+  //   mt.linkedin.com/jobs/it-auditor-jobs
+  //   mt.linkedin.com/jobs/internal-audit-jobs
+  //   jobs.accaglobal.com/jobs/malta/audit/
+  //   keepmeposted.com.mt + jobsinmalta.com + findajob.mt
+  //   jobhound.mt + muovo.eu + jobsplus.gov.mt
+  // ══════════════════════════════════════════════════════════════════════════
+
   // ── IT AUDIT ──────────────────────────────────────────────────────────────
   {
     category: "IT Audit",
@@ -216,7 +248,93 @@ const JOBS = [
     source: "LinkedIn",
     url: "https://mt.linkedin.com/jobs/view/it-audit-risk-advisory-at-deloitte-3755956991",
   },
+  {
+    category: "IT Audit",
+    title: "IT Audit Senior",
+    company: "KPMG Malta",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Active",
+    description:
+      "KPMG Malta's IT Audit team supports over 150 audit staff in financial audits for banks, financial institutions, iGaming entities and insurance companies. The IT Audit Senior conducts SOC reporting, ISAE 3000 assurance engagements, GITC and automated control reviews. CISA preferred. Relocation support available.",
+    skills: ["GITC", "SOC 1 & 2", "ISAE 3000", "SSAE 18", "IT Assurance", "CISA", "Financial Audits"],
+    source: "KPMG Careers",
+    url: "https://kpmg.com/mt/en/home/careers/experienced-hires/audit/it-audit-senior-vacancy.html",
+  },
+  {
+    category: "IT Audit",
+    title: "IT Audit Manager",
+    company: "KPMG Malta",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Active",
+    description:
+      "KPMG Malta IT Audit Manager reporting to the IT Assurance Director. Manages IT Audit teams across KPMG Malta and the KPMG Islands Group (Barbados, Bermuda, Cayman, Guernsey, Isle of Man, Jersey). Leads engagements on disruptive technologies including blockchain, crypto and data analytics. Requires 5+ years Big 4 experience.",
+    skills: ["IT Audit Management", "Blockchain", "Data Analytics", "SOC", "ISAE 3000", "ISAs", "Big 4"],
+    source: "KPMG Careers",
+    url: "https://kpmg.com/mt/en/home/careers/experienced-hires/audit/it-audit-manager-vacancy.html",
+  },
 
+  // ── IT RISK / CONTROLS / GOVERNANCE / COMPLIANCE ─────────────────────────
+  {
+    category: "IT Audit",
+    title: "Manager – Governance, Risk & Compliance (GRC)",
+    company: "KPMG Malta",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Active",
+    description:
+      "KPMG Malta Risk Consulting is hiring a GRC Manager. Leads engagements across Board Governance, Enterprise Risk Management, Regulatory Compliance, Process Design and Internal Audit. Strong knowledge of GRC frameworks, ERM, internal audit and Malta/EU regulatory frameworks required. Relocation package available.",
+    skills: ["GRC", "ERM", "Internal Audit", "Regulatory Compliance", "Internal Controls", "MFSA", "EU Regulations"],
+    source: "ACCA Careers",
+    url: "https://jobs.accaglobal.com/job/13830744/manager-governance-risk-and-compliance/",
+  },
+  {
+    category: "IT Audit",
+    title: "IT Risk & Controls Manager",
+    company: "Compre Group (Reinsurance)",
+    location: "Malta / London (Hybrid)",
+    type: "Full-time",
+    salary: "£70,000 – £100,000/yr",
+    posted: "Active",
+    description:
+      "Compre Group, a fast-growing global reinsurance company, seeks its first IT Risk & Controls Manager to build and lead the IT/cybersecurity controls framework across the whole group (Malta, UK, Bermuda, Finland, Germany, US). Covers DORA compliance, cloud security, IT risk management and controls implementation. Reporting to the Head of Enterprise Transformation.",
+    skills: ["IT Risk", "DORA", "ISO 27001", "NIST", "Cloud Security", "Cybersecurity", "Controls Framework"],
+    source: "LinkedIn",
+    url: "https://mt.linkedin.com/jobs/it-auditor-jobs",
+  },
+  {
+    category: "IT Audit",
+    title: "Junior Information Security GRC Executive",
+    company: "Insurance Company (via GRS Recruitment)",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Active",
+    description:
+      "Leading insurance company in Malta seeking a Junior Information Security GRC (Governance, Risk & Control) Executive. Background in IT security and audit required. Involves IT risk assessments, control testing and compliance reporting within a regulated insurance environment.",
+    skills: ["GRC", "Information Security", "IT Audit", "Risk Assessment", "Control Testing", "Insurance", "Compliance"],
+    source: "GRS Recruitment",
+    url: "https://www.grsrecruitment.com/jobs-in-malta/",
+  },
+
+  {
+    category: "Internal Audit",
+    title: "Senior Analyst – Risk Management",
+    company: "Malta Financial Services Authority (MFSA)",
+    location: "Malta (Hybrid)",
+    type: "Indefinite",
+    salary: "Grade 9",
+    posted: "Jan 2026",
+    description:
+      "MFSA Risk Management function seeks a Senior Analyst. Responsible for risk assessments, ensuring MFSA internal processes comply with European Standards, providing strategic input on risk appetite and quality improvement recommendations. Reports to the Risk Management team.",
+    skills: ["Risk Management", "ERM", "EU Regulatory Standards", "Risk Assessment", "Internal Controls", "Compliance"],
+    source: "MFSA Careers",
+    url: "https://careers.mfsa.mt/jobs/84567/senior-analyst-risk-management",
+  },
   // ── INTERNAL AUDIT ────────────────────────────────────────────────────────
   {
     category: "Internal Audit",
