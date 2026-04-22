@@ -160,6 +160,62 @@ const JOBS = [
     source: "LinkedIn",
     url: "https://mt.linkedin.com/jobs/internal-audit-jobs",
   },
+  {
+    category: "IT Audit",
+    title: "IT Auditor",
+    company: "BDO Malta",
+    location: "Msida, Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "4 days ago",
+    description:
+      "BDO Malta is actively hiring an IT Auditor in Msida. The role sits within BDO's Risk Advisory practice and involves IT general controls (GITC), IT application controls (ITAC), SOC 1 & 2, ISO 27001, and SOX audit engagements. BDO Malta forms part of BDO's global network operating across 164 countries.",
+    skills: ["GITC", "ITAC", "SOC 1 & 2", "ISO 27001", "SOX", "GRC", "Cybersecurity Audit"],
+    source: "LinkedIn",
+    url: "https://www.linkedin.com/jobs/bdo-malta-jobs-worldwide",
+  },
+  {
+    category: "IT Audit",
+    title: "IT Auditor",
+    company: "PwC Malta",
+    location: "Qormi, Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "7 months ago – Actively Hiring",
+    description:
+      "PwC Malta is the largest professional services firm in Malta with ~700 staff. The IT Auditor role sits within their Risk & Regulation / Technology Audit practice. PwC Malta serves a large portfolio including public companies, government entities and iGaming operators from its Qormi office.",
+    skills: ["IT Audit", "Technology Risk", "Risk & Regulation", "Cybersecurity", "GITC", "Advisory"],
+    source: "LinkedIn",
+    url: "https://www.pwc.com/mt/en/careers/job-search.html",
+  },
+  {
+    category: "IT Audit",
+    title: "IT Internal Auditor, Senior",
+    company: "Shift4 (Fintech / Payments)",
+    location: "Valletta, Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "2 weeks ago",
+    description:
+      "Shift4 (NYSE: FOUR), a global leader in commerce-enabling payments technology, is hiring a Senior IT Internal Auditor in Valletta. Reports to the Director of Internal Audit, Europe. Responsible for IT regulatory and operational audits, ITGC component of US SOX, and other compliance areas. Hybrid working, health/dental/life insurance, pension and parking included.",
+    skills: ["SOX ITGC", "IT Regulatory Audit", "Operational Audit", "Payments", "Fintech", "Governance"],
+    source: "LinkedIn",
+    url: "https://job-boards.greenhouse.io/shift4/jobs/4495194007",
+  },
+  {
+    category: "IT Audit",
+    title: "A&A – IT Auditor (Audit & Assurance)",
+    company: "Deloitte Malta",
+    location: "Birkirkara, Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Active",
+    description:
+      "Deloitte Malta's Audit & Assurance (A&A) practice is hiring an IT Auditor. Led by Director Sandro Psaila (CISA, 20+ years IT audit experience), the team delivers IT Audit & Assurance engagements across remote gaming, financial services, aviation, hospitality and retail. Includes Control Assurance, Third-party Assurance and AI & Algorithm Assurance services.",
+    skills: ["CISA", "GITC", "Control Assurance", "Third-party Assurance", "AI Assurance", "iGaming", "IFRS"],
+    source: "LinkedIn",
+    url: "https://mt.linkedin.com/jobs/view/it-audit-risk-advisory-at-deloitte-3755956991",
+  },
 
   // ── INTERNAL AUDIT ────────────────────────────────────────────────────────
   {
