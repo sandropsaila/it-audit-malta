@@ -756,21 +756,37 @@ export default function App() {
 
         {/* ── HEADER ── */}
         <header style={s.header}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14, flexWrap: "wrap" }}>
-            <div style={s.badge}>
-              <span style={{ display: "block", fontSize: 9, letterSpacing: 2, marginBottom: 2 }}>DATA RETRIEVED</span>
-              <span style={{ display: "block", fontSize: 11, letterSpacing: 1 }}>{lastRefresh}</span>
+
+          {/* Top bar */}
+          <div style={s.topBar}>
+            <div style={s.topBarLeft}>
+              <span style={s.flagIcon}>🇲🇹</span>
+              <span style={s.topBarLabel}>MALTA AUDIT JOBS</span>
             </div>
-            <button style={s.refreshBtn} onClick={handleRefresh} title="Refresh results">↺ Refresh</button>
-            <button style={s.infoBtn} onClick={() => setShowInfo(!showInfo)} title="Data sources info">
-              {showInfo ? "✕ Close" : "ℹ Sources & Tips"}
-            </button>
+            <div style={s.topBarRight}>
+              <div style={s.badge}>
+                <span style={s.badgeLabel}>DATA RETRIEVED</span>
+                <span style={s.badgeTime}>{lastRefresh}</span>
+              </div>
+              <button style={s.refreshBtn} onClick={handleRefresh}>↺ Refresh</button>
+              <button style={s.infoBtn} onClick={() => setShowInfo(!showInfo)}>
+                {showInfo ? "✕ Close" : "ℹ Sources"}
+              </button>
+            </div>
           </div>
-          <h1 style={s.title}><span style={s.accent}>IT & INTERNAL AUDIT</span><br />MALTA VACANCIES</h1>
-          <p style={s.sub}>
-            {JOBS.length} vacancies · {withSalary} with salary · across 10+ sources in{" "}
-            <span style={s.malta}>🇲🇹 Malta</span>
-          </p>
+
+          {/* Title block */}
+          <div style={s.titleBlock}>
+            <div style={s.titleEyebrow}>AUDIT VACANCY TRACKER</div>
+            <h1 style={s.title}>
+              IT, Internal &amp; External Audit
+              <span style={s.titleSub}> Malta Vacancies</span>
+            </h1>
+            <p style={s.sub}>
+              {JOBS.length} active vacancies · {withSalary} with disclosed salary · sourced across 10+ platforms
+            </p>
+          </div>
+
         </header>
 
         {/* ── INFO PANEL ── */}
@@ -969,58 +985,69 @@ export default function App() {
 }
 
 const s = {
+  // ── Layout
   root:        { minHeight: "100vh", background: "#f1f5f9", color: "#1e293b", fontFamily: "'Plus Jakarta Sans', sans-serif", position: "relative", overflowX: "hidden" },
-  grid:        { position: "fixed", inset: 0, backgroundImage: "linear-gradient(rgba(59,130,246,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.07) 1px,transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none" },
-  wrap:        { maxWidth: 900, margin: "0 auto", padding: "40px 16px 60px", position: "relative", zIndex: 1 },
-  header:      { textAlign: "center", marginBottom: 28 },
-  badge:       { display: "inline-block", background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.5)", color: "#047857", padding: "4px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 2 },
-  refreshBtn:  { background: "#2563eb", border: "none", color: "#ffffff", padding: "5px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 1, cursor: "pointer", fontFamily: "inherit", fontWeight: 700 },
-  infoBtn:     { background: "#475569", border: "none", color: "#ffffff", padding: "5px 14px", borderRadius: 3, fontSize: 11, letterSpacing: 1, cursor: "pointer", fontFamily: "inherit", fontWeight: 700 },
-  infoPanel:   { background: "#ffffff", border: "1px solid #cbd5e1", borderRadius: 8, padding: "20px", marginBottom: 20, boxShadow: "0 2px 8px rgba(0,0,0,0.06)" },
+  grid:        { position: "fixed", inset: 0, backgroundImage: "linear-gradient(rgba(59,130,246,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.05) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" },
+  wrap:        { maxWidth: 920, margin: "0 auto", padding: "0 16px 60px", position: "relative", zIndex: 1 },
+  header:      { marginBottom: 28 },
+  topBar:      { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10, background: "#1e293b", padding: "10px 20px", borderRadius: "0 0 10px 10px", marginBottom: 28, boxShadow: "0 2px 8px rgba(0,0,0,0.12)" },
+  topBarLeft:  { display: "flex", alignItems: "center", gap: 8 },
+  flagIcon:    { fontSize: 18 },
+  topBarLabel: { color: "#94a3b8", fontSize: 11, fontWeight: 600, letterSpacing: 2 },
+  topBarRight: { display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" },
+  badge:       { background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.35)", borderRadius: 6, padding: "4px 12px", textAlign: "right" },
+  badgeLabel:  { display: "block", color: "#34d399", fontSize: 8, fontWeight: 700, letterSpacing: 2, marginBottom: 1 },
+  badgeTime:   { display: "block", color: "#6ee7b7", fontSize: 10, fontWeight: 500 },
+  refreshBtn:  { background: "#2563eb", border: "none", color: "#fff", padding: "6px 14px", borderRadius: 6, fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", letterSpacing: 0.5 },
+  infoBtn:     { background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "#cbd5e1", padding: "6px 14px", borderRadius: 6, fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" },
+  titleBlock:  { textAlign: "center", padding: "0 16px 4px" },
+  titleEyebrow:{ fontSize: 11, fontWeight: 700, letterSpacing: 3, color: "#2563eb", marginBottom: 10, textTransform: "uppercase" },
+  title:       { fontSize: "clamp(22px,5vw,42px)", fontWeight: 800, lineHeight: 1.2, margin: "0 0 10px", color: "#0f172a", letterSpacing: -0.5, fontFamily: "'Plus Jakarta Sans', sans-serif" },
+  titleSub:    { color: "#2563eb" },
+  accent:      { color: "#2563eb" },
+  sub:         { color: "#64748b", fontSize: 13, lineHeight: 1.6, fontWeight: 400 },
+  malta:       { color: "#d97706", fontWeight: 600 },
+  infoPanel:   { background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 10, padding: "20px", marginBottom: 20, boxShadow: "0 1px 6px rgba(0,0,0,0.05)" },
   infoTitle:   { fontSize: 14, fontWeight: 700, color: "#0f172a", margin: "0 0 16px" },
   infoGrid:    { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12, marginBottom: 16 },
-  infoBlock:   { background: "#f1f5f9", borderRadius: 6, padding: "12px 14px" },
+  infoBlock:   { background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 8, padding: "12px 14px" },
   infoBlockTitle: { fontSize: 12, fontWeight: 700, color: "#1e293b", marginBottom: 6 },
   infoText:    { fontSize: 11, color: "#475569", lineHeight: 1.6, margin: 0 },
   infoLink:    { color: "#2563eb", textDecoration: "none" },
   liveLinksGrid: { display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10 },
-  liveLink:    { color: "#1d4ed8", fontSize: 11, textDecoration: "none", background: "#eff6ff", border: "1px solid #bfdbfe", padding: "4px 10px", borderRadius: 3, fontWeight: 600 },
-  title:       { fontSize: "clamp(26px,6vw,52px)", fontWeight: 900, letterSpacing: -1, lineHeight: 1.1, margin: "0 0 12px", fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#0f172a" },
-  accent:      { color: "#2563eb" },
-  sub:         { color: "#334155", fontSize: 13, lineHeight: 1.7 },
-  malta:       { color: "#d97706", fontWeight: 700 },
-  statsBar:    { display: "flex", background: "#e2e8f0", border: "1px solid #cbd5e1", borderRadius: 8, overflow: "hidden", marginBottom: 16, cursor: "pointer", boxShadow: "0 1px 3px rgba(0,0,0,0.08)" },
-  stat:        { flex: 1, display: "flex", flexDirection: "column", alignItems: "center", padding: "14px 8px", transition: "background 0.15s" },
-  sNum:        { fontSize: "clamp(20px,4vw,30px)", fontWeight: 900, lineHeight: 1 },
-  sLbl:        { fontSize: 9, color: "#475569", letterSpacing: 0.5, marginTop: 4, textAlign: "center" },
-  sdiv:        { width: 1, background: "#cbd5e1" },
-  summBox:     { background: "#e2e8f0", border: "1px solid #cbd5e1", borderRadius: 6, padding: "12px 16px", fontSize: 13, color: "#1e293b", lineHeight: 1.8, marginBottom: 16 },
-  searchBox:   { width: "100%", boxSizing: "border-box", background: "#ffffff", border: "1px solid #94a3b8", borderRadius: 6, padding: "10px 14px", fontSize: 14, color: "#0f172a", fontFamily: "inherit", marginBottom: 12, outline: "none", boxShadow: "0 1px 2px rgba(0,0,0,0.06)" },
+  liveLink:    { color: "#1d4ed8", fontSize: 11, textDecoration: "none", background: "#eff6ff", border: "1px solid #bfdbfe", padding: "4px 10px", borderRadius: 5, fontWeight: 600 },
+  statsBar:    { display: "flex", background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 10, overflow: "hidden", marginBottom: 20, cursor: "pointer", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" },
+  stat:        { flex: 1, display: "flex", flexDirection: "column", alignItems: "center", padding: "16px 8px", transition: "background 0.15s" },
+  sNum:        { fontSize: "clamp(22px,4vw,32px)", fontWeight: 800, lineHeight: 1 },
+  sLbl:        { fontSize: 10, color: "#64748b", fontWeight: 500, letterSpacing: 0.3, marginTop: 4, textAlign: "center" },
+  sdiv:        { width: 1, background: "#e2e8f0" },
+  summBox:     { background: "#ffffff", border: "1px solid #e2e8f0", borderLeft: "4px solid #2563eb", borderRadius: "0 8px 8px 0", padding: "14px 18px", fontSize: 13, color: "#334155", lineHeight: 1.8, marginBottom: 20, boxShadow: "0 1px 4px rgba(0,0,0,0.04)" },
+  searchBox:   { width: "100%", boxSizing: "border-box", background: "#ffffff", border: "1px solid #cbd5e1", borderRadius: 8, padding: "11px 16px", fontSize: 14, color: "#0f172a", fontFamily: "inherit", marginBottom: 12, outline: "none", boxShadow: "0 1px 3px rgba(0,0,0,0.05)", fontWeight: 400 },
   filterRow:   { display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10, alignItems: "center" },
-  filterLabel: { color: "#475569", fontSize: 11, marginRight: 2 },
-  tab:         { background: "#e2e8f0", border: "1px solid #94a3b8", color: "#1e293b", padding: "6px 14px", borderRadius: 4, cursor: "pointer", fontFamily: "inherit", fontSize: 12, boxShadow: "0 1px 2px rgba(0,0,0,0.06)" },
+  filterLabel: { color: "#64748b", fontSize: 11, fontWeight: 600, marginRight: 2 },
+  tab:         { background: "#ffffff", border: "1px solid #cbd5e1", color: "#475569", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontFamily: "inherit", fontSize: 12, fontWeight: 500, boxShadow: "0 1px 2px rgba(0,0,0,0.04)" },
   tabSm:       { padding: "4px 10px", fontSize: 11 },
-  tabSmOn:     { background: "#cbd5e1", border: "1px solid #64748b", color: "#0f172a" },
-  count:       { color: "#475569", fontSize: 11, marginBottom: 10 },
+  tabSmOn:     { background: "#f1f5f9", border: "1px solid #64748b", color: "#0f172a", fontWeight: 600 },
+  count:       { color: "#94a3b8", fontSize: 11, fontWeight: 500, marginBottom: 10 },
   list:        { display: "flex", flexDirection: "column", gap: 10 },
-  card:        { background: "#ffffff", border: "1px solid #cbd5e1", borderRadius: 8, padding: "14px 16px", cursor: "pointer", transition: "border-color 0.15s, box-shadow 0.15s", boxShadow: "0 1px 4px rgba(0,0,0,0.07)" },
-  cardTop:     { display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 8 },
-  catPill:     { padding: "2px 8px", borderRadius: 3, fontSize: 9, letterSpacing: 1, whiteSpace: "nowrap", flexShrink: 0 },
-  jTitle:      { fontWeight: 700, fontSize: 14, color: "#0f172a" },
-  jCo:         { color: "#1d4ed8", fontSize: 12, marginTop: 2 },
-  srcTag:      { background: "#ddd6fe", border: "1px solid #a78bfa", color: "#5b21b6", padding: "2px 8px", borderRadius: 3, fontSize: 9, letterSpacing: 0.5, whiteSpace: "nowrap", flexShrink: 0 },
-  meta:        { display: "flex", gap: 10, flexWrap: "wrap" },
-  mi:          { color: "#475569", fontSize: 11 },
-  xhint:       { color: "#94a3b8", fontSize: 10, marginTop: 8, textAlign: "right" },
-  det:         { marginTop: 12, paddingTop: 12, borderTop: "1px solid #e2e8f0" },
-  desc:        { color: "#1e293b", fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" },
-  skills:      { display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 10 },
-  skill:       { padding: "2px 8px", borderRadius: 3, fontSize: 10 },
-  link:        { fontSize: 12, textDecoration: "none" },
-  empty:       { textAlign: "center", color: "#64748b", padding: "40px 0", fontSize: 13 },
-  legend:      { marginTop: 40, borderTop: "1px solid #cbd5e1", paddingTop: 20 },
-  legendTitle: { color: "#475569", fontSize: 11, letterSpacing: 2, marginBottom: 12 },
+  card:        { background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 10, padding: "16px 18px", cursor: "pointer", transition: "border-color 0.15s, box-shadow 0.15s", boxShadow: "0 1px 4px rgba(0,0,0,0.05)" },
+  cardTop:     { display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 8 },
+  catPill:     { padding: "3px 9px", borderRadius: 20, fontSize: 9, fontWeight: 700, letterSpacing: 0.5, whiteSpace: "nowrap", flexShrink: 0, textTransform: "uppercase" },
+  jTitle:      { fontWeight: 700, fontSize: 14, color: "#0f172a", lineHeight: 1.4 },
+  jCo:         { color: "#2563eb", fontSize: 12, fontWeight: 600, marginTop: 2 },
+  srcTag:      { background: "#f5f3ff", border: "1px solid #ddd6fe", color: "#6d28d9", padding: "3px 9px", borderRadius: 20, fontSize: 9, fontWeight: 700, letterSpacing: 0.3, whiteSpace: "nowrap", flexShrink: 0 },
+  meta:        { display: "flex", gap: 14, flexWrap: "wrap" },
+  mi:          { color: "#64748b", fontSize: 11, fontWeight: 500 },
+  xhint:       { color: "#cbd5e1", fontSize: 10, marginTop: 10, textAlign: "right", fontWeight: 500 },
+  det:         { marginTop: 14, paddingTop: 14, borderTop: "1px solid #f1f5f9" },
+  desc:        { color: "#334155", fontSize: 12, lineHeight: 1.75, margin: "0 0 12px", fontWeight: 400 },
+  skills:      { display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 12 },
+  skill:       { padding: "3px 9px", borderRadius: 5, fontSize: 10, fontWeight: 600 },
+  link:        { fontSize: 12, textDecoration: "none", fontWeight: 600 },
+  empty:       { textAlign: "center", color: "#94a3b8", padding: "40px 0", fontSize: 13 },
+  legend:      { marginTop: 40, borderTop: "1px solid #e2e8f0", paddingTop: 20 },
+  legendTitle: { color: "#94a3b8", fontSize: 10, fontWeight: 700, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" },
   legendGrid:  { display: "flex", flexWrap: "wrap", gap: 8 },
-  srcLink:     { color: "#1e293b", fontSize: 11, textDecoration: "none", background: "#e2e8f0", border: "1px solid #94a3b8", padding: "4px 10px", borderRadius: 3 },
-  footer:      { marginTop: 24, textAlign: "center", color: "#64748b", fontSize: 10 },
+  srcLink:     { color: "#475569", fontSize: 11, fontWeight: 500, textDecoration: "none", background: "#f8fafc", border: "1px solid #e2e8f0", padding: "4px 10px", borderRadius: 5 },
+  footer:      { marginTop: 24, textAlign: "center", color: "#94a3b8", fontSize: 10, fontWeight: 400 },
 };
