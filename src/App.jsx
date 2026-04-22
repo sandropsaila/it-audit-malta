@@ -675,6 +675,7 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [sortBy, setSortBy]     = useState("default");
   const [showInfo, setShowInfo] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   const formatStamp = (d) => {
     const date = d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
@@ -856,51 +857,76 @@ export default function App() {
           <strong style={{ color: "#047857" }}> External Audit</strong> vacancies span entry to senior management (€20k–€100k) across EY, DFK, GCB, Broadwing and Konnekt.
         </div>
 
-        {/* ── SEARCH ── */}
-        <input
-          style={s.searchBox}
-          placeholder="🔍  Search by title, company, skill, or location..."
-          value={search}
-          onChange={(e) => { setSearch(e.target.value); setSelected(null); }}
-        />
-
-        {/* ── CATEGORY TABS ── */}
-        <div style={s.filterRow}>
-          {CATEGORIES.map((cat) => {
-            const c = CAT_COLORS[cat] || {};
-            const active = category === cat;
-            return (
-              <button key={cat}
-                style={{ ...s.tab, ...(active ? { background: c.bg || "rgba(255,255,255,0.08)", borderColor: c.border || "#fff", color: c.text || "#fff" } : {}) }}
-                onClick={() => { setCategory(cat); setSelected(null); }}
-              >{cat}</button>
-            );
-          })}
+        {/* ── SEARCH & FILTER MENU ── */}
+        <div style={s.filterBar}>
+          <input
+            style={s.searchInline}
+            placeholder="🔍  Search vacancies..."
+            value={search}
+            onChange={(e) => { setSearch(e.target.value); setSelected(null); }}
+          />
+          <button style={s.filterToggle} onClick={() => setShowFilters(!showFilters)}>
+            <span style={s.filterIcon}>⚙</span>
+            <span>Filters</span>
+            {(category !== "All" || source !== "All" || sortBy !== "default") && (
+              <span style={s.filterDot} />
+            )}
+          </button>
         </div>
 
-        {/* ── SOURCE FILTER ── */}
-        <div style={{ ...s.filterRow, marginTop: -6 }}>
-          <span style={s.filterLabel}>Source:</span>
-          {ALL_SOURCES.map((src) => (
-            <button key={src}
-              style={{ ...s.tab, ...s.tabSm, ...(source === src ? s.tabSmOn : {}) }}
-              onClick={() => { setSource(src); setSelected(null); }}
-            >{src}</button>
-          ))}
-        </div>
+        {/* ── FILTER DRAWER ── */}
+        {showFilters && (
+          <div style={s.filterDrawer}>
+            <div style={s.filterSection}>
+              <div style={s.filterSectionTitle}>Category</div>
+              <div style={s.filterChips}>
+                {CATEGORIES.map((cat) => {
+                  const c = CAT_COLORS[cat] || {};
+                  const active = category === cat;
+                  return (
+                    <button key={cat}
+                      style={{ ...s.chip, ...(active ? { background: c.bg, border: `1px solid ${c.border}`, color: c.text, fontWeight: 700 } : {}) }}
+                      onClick={() => { setCategory(cat); setSelected(null); }}
+                    >{cat}</button>
+                  );
+                })}
+              </div>
+            </div>
+            <div style={s.filterSection}>
+              <div style={s.filterSectionTitle}>Sort by</div>
+              <div style={s.filterChips}>
+                {[["default","Default"],["salary","Salary ↓"],["company","Company A–Z"],["category","Category"]].map(([val, label]) => (
+                  <button key={val}
+                    style={{ ...s.chip, ...(sortBy === val ? s.chipActive : {}) }}
+                    onClick={() => setSortBy(val)}
+                  >{label}</button>
+                ))}
+              </div>
+            </div>
+            <div style={s.filterSection}>
+              <div style={s.filterSectionTitle}>Source</div>
+              <div style={s.filterChips}>
+                {ALL_SOURCES.map((src) => (
+                  <button key={src}
+                    style={{ ...s.chip, ...(source === src ? s.chipActive : {}) }}
+                    onClick={() => { setSource(src); setSelected(null); }}
+                  >{src}</button>
+                ))}
+              </div>
+            </div>
+            <div style={s.filterFooter}>
+              <span style={s.filterCount}>{filtered.length} result{filtered.length !== 1 ? "s" : ""}</span>
+              <button style={s.clearBtn} onClick={() => { setCategory("All"); setSource("All"); setSortBy("default"); setSearch(""); setSelected(null); setShowFilters(false); }}>
+                ✕ Clear all
+              </button>
+              <button style={s.applyBtn} onClick={() => setShowFilters(false)}>
+                Show {filtered.length} results →
+              </button>
+            </div>
+          </div>
+        )}
 
-        <div style={s.count}>{filtered.length} result{filtered.length !== 1 ? "s" : ""}</div>
-
-        {/* ── SORT ── */}
-        <div style={{ ...s.filterRow, marginBottom: 14 }}>
-          <span style={s.filterLabel}>Sort:</span>
-          {[["default","Default"],["salary","Salary ↓"],["company","Company A–Z"],["category","Category"]].map(([val, label]) => (
-            <button key={val}
-              style={{ ...s.tab, ...s.tabSm, ...(sortBy === val ? s.tabSmOn : {}) }}
-              onClick={() => setSortBy(val)}
-            >{label}</button>
-          ))}
-        </div>
+        <div style={s.resultsCount}>{filtered.length} result{filtered.length !== 1 ? "s" : ""}</div>
 
         {/* ── JOB CARDS ── */}
         <div style={s.list}>
@@ -1051,3 +1077,23 @@ const s = {
   srcLink:     { color: "#475569", fontSize: 11, fontWeight: 500, textDecoration: "none", background: "#f8fafc", border: "1px solid #e2e8f0", padding: "4px 10px", borderRadius: 5 },
   footer:      { marginTop: 24, textAlign: "center", color: "#94a3b8", fontSize: 10, fontWeight: 400 },
 };
+
+// Additional filter menu styles (appended)
+Object.assign(s, {
+  filterBar:    { display: "flex", gap: 10, marginBottom: 14, alignItems: "center" },
+  searchInline: { flex: 1, background: "#ffffff", border: "1px solid #cbd5e1", borderRadius: 8, padding: "11px 16px", fontSize: 14, color: "#0f172a", fontFamily: "'Plus Jakarta Sans', sans-serif", outline: "none", boxShadow: "0 1px 3px rgba(0,0,0,0.05)" },
+  filterToggle: { display: "flex", alignItems: "center", gap: 6, background: "#ffffff", border: "1px solid #cbd5e1", borderRadius: 8, padding: "11px 16px", fontSize: 13, fontWeight: 600, color: "#374151", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 1px 3px rgba(0,0,0,0.05)", whiteSpace: "nowrap", position: "relative" },
+  filterIcon:   { fontSize: 15 },
+  filterDot:    { width: 7, height: 7, borderRadius: "50%", background: "#2563eb", position: "absolute", top: 8, right: 8 },
+  filterDrawer: { background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 12, padding: "18px", marginBottom: 16, boxShadow: "0 4px 16px rgba(0,0,0,0.08)" },
+  filterSection:{ marginBottom: 16 },
+  filterSectionTitle: { fontSize: 10, fontWeight: 700, color: "#94a3b8", letterSpacing: 2, textTransform: "uppercase", marginBottom: 8 },
+  filterChips:  { display: "flex", flexWrap: "wrap", gap: 6 },
+  chip:         { background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 20, padding: "5px 13px", fontSize: 12, fontWeight: 500, color: "#475569", cursor: "pointer", fontFamily: "inherit" },
+  chipActive:   { background: "#eff6ff", border: "1px solid #bfdbfe", color: "#1d4ed8", fontWeight: 700 },
+  filterFooter: { display: "flex", alignItems: "center", gap: 10, paddingTop: 14, borderTop: "1px solid #f1f5f9", flexWrap: "wrap" },
+  filterCount:  { color: "#94a3b8", fontSize: 12, fontWeight: 500, flex: 1 },
+  clearBtn:     { background: "transparent", border: "1px solid #e2e8f0", borderRadius: 6, padding: "7px 14px", fontSize: 12, color: "#64748b", cursor: "pointer", fontFamily: "inherit", fontWeight: 500 },
+  applyBtn:     { background: "#2563eb", border: "none", borderRadius: 6, padding: "7px 18px", fontSize: 12, color: "#fff", cursor: "pointer", fontFamily: "inherit", fontWeight: 700 },
+  resultsCount: { color: "#94a3b8", fontSize: 11, fontWeight: 500, marginBottom: 10 },
+});
