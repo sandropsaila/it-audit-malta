@@ -421,7 +421,126 @@ const JOBS = [
     url: "https://jobsplus.gov.mt",
   },
 
-  // ── AUDIT (GENERAL / EXTERNAL) ────────────────────────────────────────────
+  // ── AUDIT — EXTERNAL / GENERAL ────────────────────────────────────────────
+  // Search strings used for this category:
+  //   "Auditor Malta"            "Senior Auditor Malta"       "Audit Manager Malta"
+  //   "Audit Senior Malta"       "Senior Audit Manager Malta" "Audit Director Malta"
+  //   "Audit Executive Malta"    "Junior Auditor Malta"       "External Auditor Malta"
+  //   "Audit Partner Malta"      "Audit Associate Malta"
+  //   Recruitment agencies: AIMS, Konnekt, Heroix, Manpower, Broadwing, GRS, MRecruitment
+  // ──────────────────────────────────────────────────────────────────────────
+  {
+    category: "External Audit",
+    title: "Senior Audit Manager",
+    company: "AIMS International Malta (client confidential)",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Expires in 7 days",
+    description:
+      "Via AIMS International Malta: Senior Audit Manager role overseeing the audit team, managing a large diverse client portfolio, and supporting the Director of Audit. Responsibilities include planning, executing and directing financial audits, managing audit staff and ensuring ISA compliance.",
+    skills: ["Audit Management", "ISAs", "IFRS", "Client Portfolio", "Team Leadership", "Financial Statements"],
+    source: "Jobsinmalta",
+    url: "https://jobsinmalta.com/audit-jobs",
+  },
+  {
+    category: "External Audit",
+    title: "Audit Director",
+    company: "AIMS International Malta (client confidential)",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Expires in 7 days",
+    description:
+      "Director-level audit vacancy via AIMS International Malta on Jobsinmalta. Senior leadership position overseeing the entire audit function for a financial services client. Requires extensive audit experience and strong client relationship management skills.",
+    skills: ["Audit Leadership", "Financial Services", "Client Management", "ISAs", "IFRS", "Director Level"],
+    source: "Jobsinmalta",
+    url: "https://jobsinmalta.com/audit-jobs",
+  },
+  {
+    category: "External Audit",
+    title: "Audit Manager",
+    company: "AIMS International Malta (Financial Services client)",
+    location: "Malta",
+    type: "Full-time",
+    salary: "€40,000 – €43,000/yr",
+    posted: "Feb 2026 – Active",
+    description:
+      "AIMS International Malta is recruiting an Audit Manager for a financial services client. Lead audit engagements from start to finish including budgeting, risk assessment and client communications. Mentor audit staff, review financial statements and present findings to senior management. Requires ACA/ACCA/CPA with 5+ years experience.",
+    skills: ["ISA", "PCAOB", "IFRS", "US GAAP", "Audit Management", "ACCA", "Risk Assessment", "Client Relations"],
+    source: "Jobsinmalta",
+    url: "https://jobsinmalta.com/job/accounting/audit-manager-92410",
+  },
+  {
+    category: "External Audit",
+    title: "Senior Audit Manager",
+    company: "Manpower Malta (client confidential)",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Active",
+    description:
+      "Manpower Malta is seeking a Senior Audit Manager to oversee the audit team, manage a large and diverse portfolio of clients, and support the Director of Audit. Responsibilities include planning and executing financial audits to ISA standards, managing audit staff across multiple concurrent projects and maintaining client relationships.",
+    skills: ["ISAs", "Financial Audits", "Audit Planning", "Team Management", "Client Portfolio", "IFRS"],
+    source: "Manpower Malta",
+    url: "https://careers-page.com/manpower-malta/job/L3X5V78W",
+  },
+  {
+    category: "External Audit",
+    title: "Auditor",
+    company: "Manpower Malta (client confidential)",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Active",
+    description:
+      "Manpower Malta is recruiting an Auditor to join an established audit team. Involves planning, execution and completion of financial audits. Suited to candidates reading for ACCA/ACA or holding a recognised accounting degree, with strong communication and organisational skills.",
+    skills: ["Financial Audit", "ACCA", "ISAs", "Financial Statements", "Microsoft Office", "Attention to Detail"],
+    source: "Manpower Malta",
+    url: "https://www.careers-page.com/manpower-malta/job/LR9R9336",
+  },
+  {
+    category: "External Audit",
+    title: "Internal Auditor (AML & Compliance Focus)",
+    company: "Konnekt (client confidential)",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Mar 2026 – closes 30 Apr 2026",
+    description:
+      "Konnekt is recruiting an Internal Auditor specialising in AML and Compliance audits for MFSA or MGA supervised entities. Involves client-facing audit execution, preparing audit reports, ensuring AML Directive compliance and using AI-based tools to enhance audit efficiency. CIA/CPA/CISA preferred.",
+    skills: ["AML", "Compliance Audit", "MFSA", "MGA", "IIA Standards", "AI Tools", "Internal Audit", "CIA"],
+    source: "Konnekt",
+    url: "https://www.konnekt.com/jobs/accounting-jobs/internal-audtior-senior/84346",
+  },
+  {
+    category: "External Audit",
+    title: "Internal Auditor",
+    company: "Konnekt (client confidential)",
+    location: "Malta",
+    type: "Full-time",
+    salary: "€22,000 – €40,000/yr",
+    posted: "Active – closes 30 Apr 2026",
+    description:
+      "Konnekt is recruiting an Internal Auditor for a client in Malta. Requires strong understanding of risk management, internal controls and audit methodologies. CIA, CPA or CISA certification preferred. Responsibilities include audit execution, reporting and process improvement recommendations.",
+    skills: ["Internal Audit", "Risk Management", "Internal Controls", "CIA", "CISA", "CPA", "Audit Methodology"],
+    source: "Konnekt",
+    url: "https://www.konnekt.com/jobs/accounting-jobs/internal-auditor/86623",
+  },
+  {
+    category: "External Audit",
+    title: "Audit Executive",
+    company: "Professional Services Firm (via Jobsinmalta)",
+    location: "Malta",
+    type: "Full-time",
+    salary: "€24,000 – €28,000/yr",
+    posted: "Jan 2026 – Active",
+    description:
+      "Entry-level Audit Executive role at a modern professional services firm combining technology with audit and advisory. Reporting to Audit Seniors, involved in audit assignments across diverse industries. Suited to candidates beginning ACCA or with prior experience. Focus on integrity, client focus and collaborative culture.",
+    skills: ["Audit", "ACCA", "Financial Statements", "ISAs", "Client Engagement", "Compliance", "Microsoft Office"],
+    source: "Jobsinmalta",
+    url: "https://jobsinmalta.com/job/finance/audit-executive-90274",
+  },
   {
     category: "External Audit",
     title: "Auditor",
@@ -429,38 +548,24 @@ const JOBS = [
     location: "Malta",
     type: "Full-time",
     salary: "€40,000 – €43,000/yr",
-    posted: "Active (expires ~47 days)",
+    posted: "Active",
     description:
-      "Audit role at AIMS International Malta listed on Jobsinmalta.com and Jobhound.mt. Intermediate level (1–3 years experience). Responsibilities include audit planning, client liaison and execution of audit engagements to applicable standards.",
-    skills: ["Audit", "Client Liaison", "Financial Statements", "ACCA", "IFRS", "Risk Assessment"],
+      "AIMS International Malta is hiring an Auditor for an intermediate-level role. Listed on both Jobsinmalta and Jobhound.mt. Responsibilities include audit planning, execution and client engagement across the financial services sector.",
+    skills: ["Audit", "Financial Statements", "ACCA", "Client Engagement", "ISAs", "Financial Services"],
     source: "Jobhound.mt / Jobsinmalta",
     url: "https://jobhound.mt/jobs/auditor-9706",
   },
   {
     category: "External Audit",
-    title: "Auditor – Senior Level",
-    company: "Heroix / Confidential",
+    title: "Heroix – Senior Audit Role",
+    company: "Heroix (client confidential)",
     location: "Malta",
     type: "Full-time",
     salary: "€90,000 – €100,000/yr",
     posted: "Active (expires ~12 days)",
     description:
-      "Senior management audit position advertised via Heroix on Jobsinmalta.com. High-seniority role with an exceptional salary band for Malta, likely a Head of Audit or Partner-equivalent position.",
+      "Senior management audit position advertised via Heroix on Jobsinmalta. High-seniority role with an exceptional salary band for Malta, likely a Head of Audit, Audit Partner or Director-equivalent position.",
     skills: ["External Audit", "Senior Management", "Audit Leadership", "Client Management", "Financial Services"],
-    source: "Jobsinmalta",
-    url: "https://jobsinmalta.com/audit-jobs",
-  },
-  {
-    category: "External Audit",
-    title: "Auditor – Entry Level",
-    company: "Konnekt (client confidential)",
-    location: "Malta",
-    type: "Full-time",
-    salary: "€22,000 – €40,000/yr",
-    posted: "Active (expires ~28 days)",
-    description:
-      "Entry-level audit vacancy placed by Konnekt on Jobsinmalta.com. Suitable for ACCA students or recent graduates. Wide salary band reflects range of possible roles across different audit firms in Malta.",
-    skills: ["Audit", "ACCA", "Financial Statements", "GAPSME", "IFRS", "Teamwork"],
     source: "Jobsinmalta",
     url: "https://jobsinmalta.com/audit-jobs",
   },
