@@ -427,8 +427,52 @@ const JOBS = [
   //   "Audit Senior Malta"       "Senior Audit Manager Malta" "Audit Director Malta"
   //   "Audit Executive Malta"    "Junior Auditor Malta"       "External Auditor Malta"
   //   "Audit Partner Malta"      "Audit Associate Malta"
+  //   "Regulatory Compliance Auditor Malta"   "Compliance Support Officer Malta"
   //   Recruitment agencies: AIMS, Konnekt, Heroix, Manpower, Broadwing, GRS, MRecruitment
+  //   Also monitor LinkedIn Job Alert emails for "audit" in Malta — new postings appear here first
   // ──────────────────────────────────────────────────────────────────────────
+  {
+    category: "External Audit",
+    title: "Regulatory Compliance Auditor",
+    company: "LCKY Group (Glitnor)",
+    location: "Sliema, Malta (Hybrid)",
+    type: "Full-time",
+    salary: null,
+    posted: "28 Apr 2026 – New",
+    description:
+      "LCKY Group (formerly Glitnor), a leading iGaming software company based at Tigné Point, Sliema, is hiring a Regulatory Compliance Auditor. The role involves conducting audits of gaming systems and processes to ensure compliance with MGA and other regulatory frameworks. 9 LinkedIn connections work there. Hybrid working arrangement.",
+    skills: ["Regulatory Compliance", "MGA", "iGaming", "Audit", "Risk Assessment", "Compliance Frameworks"],
+    source: "LinkedIn",
+    url: "https://mt.linkedin.com/jobs/view/regulatory-compliance-auditor-at-lcky-group",
+  },
+  {
+    category: "External Audit",
+    title: "Accountants and Auditors",
+    company: "UHY Malta",
+    location: "Swatar, Malta (On-site)",
+    type: "Full-time",
+    salary: null,
+    posted: "28 Apr 2026 – New · Easy Apply",
+    description:
+      "UHY Malta, part of the global UHY network of accounting and advisory firms, is hiring Accountants and Auditors at their Swatar office. The role covers financial statement audits, client advisory and regulatory compliance work across a diverse portfolio. Easy Apply via LinkedIn.",
+    skills: ["Audit", "Accounting", "IFRS", "GAPSME", "Financial Statements", "Tax", "Advisory", "ACCA"],
+    source: "LinkedIn",
+    url: "https://mt.linkedin.com/jobs/view/accountants-and-auditors-at-uhy-malta-4298747469",
+  },
+  {
+    category: "External Audit",
+    title: "Compliance Support Officer",
+    company: "CSB Group",
+    location: "Birkirkara, Malta (On-site)",
+    type: "Full-time",
+    salary: null,
+    posted: "28 Apr 2026 – Actively Recruiting · Easy Apply",
+    description:
+      "CSB Group, one of Malta's leading corporate service providers established in 1987, is actively recruiting a Compliance Support Officer. The role supports the regulatory compliance and IT auditing & assurance function within the group. CSB Group holds MFSA authorisation and serves iGaming, financial services and VFA clients.",
+    skills: ["Compliance", "Regulatory", "MFSA", "AML", "IT Audit", "KYC", "iGaming", "VFA", "Risk"],
+    source: "LinkedIn",
+    url: "https://mt.linkedin.com/jobs/view/compliance-support-officer-at-csb-group",
+  },
   {
     category: "External Audit",
     title: "Senior Audit Manager",
