@@ -40,7 +40,7 @@ function PinScreen({ onUnlock }) {
     setDigits((d) => d.slice(0, -1));
   };
 
-  const keys = [1,2,3,4,5,6,7,8,9,null,0,"⌫"];
+  const keys = [1,2,3,4,5,6,7,8,9,"",0,"⌫"];
 
   return (
     <div style={p.overlay}>
@@ -697,7 +697,6 @@ const JOBS = [
     source: "Findajob.mt",
     url: "https://findajob.mt/jobs/sectors/it-software/",
   },
-,
 
   // ── NEW JOBS FOUND MAY 2026 ───────────────────────────────────────────────
   {
