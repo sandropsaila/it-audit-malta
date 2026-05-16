@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LAST_UPDATED = "21 April 2026";
+const LAST_UPDATED = "12 May 2026";
 
 // Password stored as SHA-256 hash of "1122" — never stored as plain text
 
@@ -697,6 +697,65 @@ const JOBS = [
     source: "Findajob.mt",
     url: "https://findajob.mt/jobs/sectors/it-software/",
   },
+,
+
+  // ── NEW JOBS FOUND MAY 2026 ───────────────────────────────────────────────
+  {
+    category: "External Audit",
+    title: "Senior Audit Associate",
+    company: "Accounting Firm (via GRS Recruitment)",
+    location: "Southern Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "11 Mar 2026 – Active",
+    description:
+      "A leading accounting and corporate service firm in southern Malta is growing their Audit team. Role covers full audit lifecycle — planning, fieldwork and completion. ACCA Platinum Approved Employer. Ideal for candidates pursuing or holding ACCA with Malta audit experience.",
+    skills: ["Audit Planning", "Fieldwork", "ACCA", "ISAs", "Financial Statements", "Client Management"],
+    source: "GRS Recruitment",
+    url: "https://jobs.grsrecruitment.com/job/senior-audit-associate-3245.aspx",
+  },
+  {
+    category: "Internal Audit",
+    title: "Senior Internal Audit Manager",
+    company: "Financial Institution (via Konnekt)",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Active",
+    description:
+      "Leading financial institution seeking a Senior Internal Audit Manager. Responsibilities include developing and executing internal audit plans, maintaining audit strategy, preparing audit programmes, process mapping and confirming effectiveness of internal controls. 3–5 years' experience in Financial Services required.",
+    skills: ["Internal Audit", "Audit Planning", "Internal Controls", "Risk Management", "Financial Services", "IIA Standards"],
+    source: "Konnekt",
+    url: "https://www.konnekt.com/jobs/banking-jobs/senior-internal-audit-manager/75113",
+  },
+  {
+    category: "Internal Audit",
+    title: "Head of Risk and Compliance",
+    company: "MaltaPost p.l.c.",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "May 2026 – Active",
+    description:
+      "MaltaPost is recruiting a Head of Risk and Compliance reporting to the Audit & Risk Committee and CEO. The role provides guidance on risk, regulatory and compliance matters and ensures a robust risk management structure across the organisation.",
+    skills: ["Risk Management", "Regulatory Compliance", "Audit Committee", "AML", "Governance", "Internal Controls"],
+    source: "MaltaPost Careers",
+    url: "https://www.maltapost.com/headofriskcompliance",
+  },
+  {
+    category: "IT Audit",
+    title: "Junior Information Security GRC Executive",
+    company: "Insurance Company (via GRS Recruitment)",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "May 2026 – Active",
+    description:
+      "Leading insurance company in Malta seeking a Junior Information Security GRC Executive. Background in IT security and audit required. Role covers governance, risk and compliance within the IT/cybersecurity function of a regulated insurance group.",
+    skills: ["GRC", "Information Security", "IT Audit", "Cybersecurity", "Governance", "Risk", "Insurance"],
+    source: "GRS Recruitment",
+    url: "https://www.grsrecruitment.com/jobs-in-malta/",
+  },
 ];
 
 const CATEGORIES = ["All", "IT Audit", "Internal Audit", "External Audit"];
@@ -925,7 +984,7 @@ export default function App() {
 
         {/* ── MARKET SUMMARY ── */}
         <div style={s.summBox}>
-          <strong style={{ color: "#0f172a" }}>📊 Market Snapshot:</strong> Malta's audit job market is active across all levels in April 2026.
+          <strong style={{ color: "#0f172a" }}>📊 Market Snapshot:</strong> Malta's audit job market is active across all levels in May 2026.
           <strong style={{ color: "#1d4ed8" }}> IT Audit</strong> demand is led by Deloitte, Forvis Mazars and SpotOn (iGaming & fintech).
           <strong style={{ color: "#6d28d9" }}> Internal Audit</strong> roles are open at MFSA, Vista Global, BDO and a crypto/MiCA fintech (€60–80k).
           <strong style={{ color: "#047857" }}> External Audit</strong> vacancies span entry to senior management (€20k–€100k) across EY, DFK, GCB, Broadwing and Konnekt.
@@ -1171,3 +1230,4 @@ Object.assign(s, {
   applyBtn:     { background: "#2563eb", border: "none", borderRadius: 6, padding: "7px 18px", fontSize: 12, color: "#fff", cursor: "pointer", fontFamily: "inherit", fontWeight: 700 },
   resultsCount: { color: "#94a3b8", fontSize: 11, fontWeight: 500, marginBottom: 10 },
 });
+// Build: Tue May 12 18:38:01 UTC 2026
