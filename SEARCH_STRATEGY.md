@@ -1,4 +1,4 @@
-# Search strategy (v2, Sep 2026)
+# Search strategy (v2.2, Sep 2026)
 
 Goal: never miss relevant Malta roles in IT Audit, Internal Audit, External Audit and GRC & ISO.
 
@@ -33,6 +33,22 @@ konnekt.com, jobmatchingpartner.com, italentplus.teamtailor.com, jobsinmalta.com
 - **Direct ATS pages that index well:** careers.ey.com (Msida), careers-vistaglobal.icims.com, job-boards.greenhouse.io/betsson, betssongroup.com/careers/available-jobs.
 - **Seniority variants:** Officer, Analyst, Associate, Senior, Manager, Head of.
 - **Screenshots with cut-off titles:** ask the user for the title rather than guessing.
+
+## v2.2 additions (iGaming technical-compliance / ISMS gap, Sep 2026)
+**Why these roles were missed** (LeoVegas, Kaizen, Evolution, Superbet, Heroix "Tech Compliance Analyst"):
+1. **Wrong category.** Technical-compliance roles are filed under *Legal & Compliance* (Betsson lists them under "Legal"), not IT or Audit. IT-audit-style queries never surface them.
+2. **Employer groups, not employers.** The v2 checklist only required one search per watchlist *group*. LeoVegas and Kaizen were on the list but were never swept individually.
+3. **Title variants.** "Tech Compliance Analyst" (abbreviated), "Technical Compliance Specialist", "Compliance Assurance Officer", "Senior Gaming Compliance Specialist" did not match the queries used.
+4. **Source gaps.** Careerjet blocks automated fetches; Built In, startup.jobs and the jobboardly mirrors (anyreality.jobboardly.com carries LeoVegas, Kaizen and Betway) were not used; Jobhound's Legal & Compliance catalogue was not scanned.
+5. **Employer gaps.** Superbet, Betway/Super Group, Evolution, Videoslots, Greentube and BettingJobs (an iGaming recruiter) were not on the watchlist.
+
+**Rules added**
+- Sweep *Legal & Compliance* catalogues as well as IT/Audit: `jobhound.mt/jobs/catalog/legal-and-compliance-jobs-in-malta`, jobsinmalta compliance, konnekt compliance.
+- Add these title variants to the GRC & ISO family: Tech / Technical Compliance Analyst, Specialist, Officer, Manager; Compliance Assurance; Gaming Compliance; Game / RNG certification; Security Governance Specialist; ISMS Manager; Vendor / Third-Party Risk; Game Integrity.
+- **Per-employer ATS sweep** every refresh for iGaming: LeoVegas, Kaizen (Betano), Betsson (job-boards.greenhouse.io/betsson, Legal department), Evolution, Superbet (job-boards.eu.greenhouse.io/superbet), Betway/Super Group, Videoslots, Greentube, Yggdrasil, Playtech, Entain, Flutter.
+- Extra sources: builtin.com, startup.jobs, anyreality.jobboardly.com, jobhound.mt catalogues. Treat Careerjet snippets (and AI summaries that cite them) as **leads only**: verify on the employer/ATS page before adding.
+- Recruiters: add BettingJobs (Sliema) to the recruiter list and the filter.
+- Stale check: drop or skip postings older than ~2 months (e.g. Manpower's Senior Technical Compliance Analyst, Apr-May 2026, was skipped).
 
 ## No double listings (rule added Sep 2026)
 - Before adding any role, search `src/App.jsx` for the same employer. A re-titled or reposted role (e.g. Betsson "Technical Compliance Manager - Italy" vs "Technical Compliance Officer - Italy") is **one** listing: update the existing entry, keep the direct employer/ATS link, and do not add a second.

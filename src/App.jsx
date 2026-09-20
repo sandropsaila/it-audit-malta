@@ -163,6 +163,21 @@ const JOBS = [
   // ══════════════════════════════════════════════════════════════════════════
 
   // ── IT AUDIT ──────────────────────────────────────────────────────────────
+  //
+  // ── v2.2 ADDITIONS (Sep 2026, iGaming technical-compliance / ISMS gap) ──
+  // 12) TECHNICAL COMPLIANCE SITS IN LEGAL / COMPLIANCE, NOT IT. Sweep the
+  //     Legal & Compliance categories (jobhound.mt/jobs/catalog/legal-and-compliance-
+  //     jobs-in-malta, jobsinmalta, konnekt compliance) and read every title.
+  // 13) TITLE VARIANTS: Tech Compliance Analyst / Specialist / Officer / Manager,
+  //     Compliance Assurance, Gaming Compliance, Game Certification, Security
+  //     Governance Specialist, ISMS Manager, Vendor / Third-Party Risk, Game
+  //     Integrity, RNG / test-lab (GLI, BMM, eCOGRA) compliance.
+  // 14) PER-EMPLOYER ATS SWEEP for iGaming: LeoVegas, Kaizen (Betano), Betsson,
+  //     Evolution, Superbet, Betway/Super Group, Videoslots, Greentube, Yggdrasil,
+  //     Playtech, Entain, Flutter. Aggregators seen: anyreality.jobboardly.com
+  //     (LeoVegas/Kaizen/Betway mirror), builtin.com, startup.jobs, jobhound.mt.
+  // 15) CAREERJET IS BOT-BLOCKED for automated fetches; treat its snippets (and
+  //     AI summaries citing it) as leads only and verify on the employer/ATS page.
   {
     category: "IT Audit",
     title: "IT Audit – Risk Advisory (Senior IT Auditor)",
@@ -914,8 +929,8 @@ const JOBS = [
     description:
       "Technical Compliance Manager role covering the Italian market at Betsson Group, spotted on LinkedIn (Easy Apply). Open the listing for full details.",
     skills: ["Technical Compliance", "iGaming", "Italy", "Regulatory"],
-    source: "LinkedIn",
-    url: "https://www.linkedin.com/jobs/search/?keywords=Technical+Compliance+Manager+-+Italy+Betsson+Group&location=Malta",
+    source: "Betsson Careers",
+    url: "https://job-boards.greenhouse.io/betsson/jobs/7908449",
     added: "2026-09-20",
   },
   {
@@ -1038,6 +1053,96 @@ const JOBS = [
     url: "https://careers.mfsa.mt/jobs",
     added: "2026-09-20",
   },
+  {
+    category: "GRC & ISO",
+    title: "Tech Compliance Analyst – iGaming",
+    company: "Heroix (client confidential)",
+    location: "Malta (Hybrid)",
+    type: "Full-time",
+    salary: "€31,000 – €36,000/yr",
+    posted: "c. 4 Sep 2026",
+    description:
+      "Entry-level technical compliance analyst role for an iGaming client, advertised by Heroix on Jobhound.mt (application deadline 3 Oct 2026). Open the listing for the full duties.",
+    skills: ["Technical Compliance", "iGaming", "Entry level"],
+    source: "Jobhound.mt",
+    url: "https://jobhound.mt/jobs/tech-compliance-analyst-igaming-10201",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Senior Technical Compliance Specialist",
+    company: "LeoVegas Group",
+    location: "Malta (On-site)",
+    type: "Full-time",
+    salary: null,
+    posted: "c. Aug 2026 (shown as 1 month ago)",
+    description:
+      "Second-line technical compliance role focused on the Italian jurisdiction: reviews product designs against regulation, supports technical audit activity and mentors team members. Requires 3–4 years on regulated online gambling products and Italian.",
+    skills: ["Technical Compliance", "iGaming", "Italy", "Technical Audit"],
+    source: "LeoVegas Careers",
+    url: "https://anyreality.jobboardly.com/jobs/senior-technical-compliance-specialist-dcda62b5",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Compliance Assurance Officer",
+    company: "LeoVegas Group",
+    location: "Malta (On-site)",
+    type: "Full-time",
+    salary: null,
+    posted: "c. 8 Sep 2026",
+    description:
+      "Runs compliance assurance reviews across the Group (AML, Responsible Gaming, Marketing), writes reports and action plans, and supports the Group's Compliance Assurance programme.",
+    skills: ["Compliance Assurance", "AML", "Responsible Gaming", "iGaming"],
+    source: "LeoVegas Careers",
+    url: "https://anyreality.jobboardly.com/jobs/compliance-assurance-officer-d9ebfc3f",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Senior Technical Compliance Analyst",
+    company: "Kaizen Gaming",
+    location: "Sliema, Malta (On-site)",
+    type: "Full-time",
+    salary: null,
+    posted: "c. 16 Sep 2026",
+    description:
+      "Bridges Compliance, Business and Technology: turns regulators' technical guidelines into technical requirements and leads technical compliance on market-expansion projects (\"compliance by design\").",
+    skills: ["Technical Compliance", "iGaming", "Regulatory", "Senior"],
+    source: "Built In (Kaizen Gaming)",
+    url: "https://builtin.com/job/senior-technical-compliance-analyst/7918506",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Technical Compliance Specialist",
+    company: "Evolution",
+    location: "St. Julian's, Malta (On-site)",
+    type: "Full-time",
+    salary: null,
+    posted: "c. 20 Sep 2026",
+    description:
+      "Technical compliance role for European markets: reviews technical requirements, advises the business, works with testing facilities and ensures games are certified and approved on time. Junior level.",
+    skills: ["Technical Compliance", "iGaming", "Game Certification", "Test Labs"],
+    source: "Built In (Evolution)",
+    url: "https://builtin.com/job/technical-compliance-specialist/7871115",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Technical Compliance Analyst",
+    company: "Superbet",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Open (undated on Greenhouse)",
+    description:
+      "Translates regulatory and technical compliance material into functional requirements for product teams and supports licence applications for new markets, with documentation that meets audit expectations.",
+    skills: ["Technical Compliance", "Sports Betting", "Regulatory", "Requirements"],
+    source: "Superbet Careers",
+    url: "https://job-boards.eu.greenhouse.io/superbet/jobs/4721097101",
+    added: "2026-09-20",
+  },
 ];
 
 const CATEGORIES = ["All", "IT Audit", "Internal Audit", "External Audit", "GRC & ISO"];
@@ -1065,7 +1170,7 @@ const AUDIT_FIRM_RE = new RegExp([
 const RECRUITER_RE = new RegExp([
   "aims international", "manpower", "konnekt", "heroix", "spoton", "grs recruitment", "jobmatchingpartner", "italent",
   "pentasia", "\\breed\\b", "outreach", "\\baccelerate\\b", "castille resources", "boston link", "link talent", "van kaizen",
-  "archer it", "cross border talents", "ceek", "acca careers", "recruit", "\\(via ", "client confidential", "^confidential$",
+  "archer it", "cross border talents", "ceek", "bettingjobs", "acca careers", "recruit", "\\(via ", "client confidential", "^confidential$",
 ].join("|"), "i");
 const isAuditFirm = (j) => j.employerType === "firm" || AUDIT_FIRM_RE.test(j.company);
 const isRecruiter = (j) => j.employerType === "recruiter" || RECRUITER_RE.test(j.company);
