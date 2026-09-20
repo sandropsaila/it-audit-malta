@@ -1062,7 +1062,7 @@ const FIRM_OR_RECRUITER_RE = new RegExp([
   "deloitte", "kpmg", "pwc", "\\bey\\b", "\\bbdo\\b", "mazars", "uhy", "dfk", "gcb malta", "grant thornton", "broadwing",
   "audit firm", "audit & assurance firm", "audit, tax", "accounting firm", "advisory firm", "professional services",
   "aims international", "manpower", "konnekt", "heroix", "spoton", "grs recruitment", "jobmatchingpartner", "italent",
-  "acca careers", "recruit", "\\(via ", "client confidential", "^confidential$",
+  "pentasia", "\\breed\\b", "outreach", "\\baccelerate\\b", "castille resources", "boston link", "link talent", "van kaizen", "archer it", "cross border talents", "ceek", "acca careers", "recruit", "\\(via ", "client confidential", "^confidential$",
 ].join("|"), "i");
 const isFirmOrRecruiter = (j) => j.employerType === "firm" || FIRM_OR_RECRUITER_RE.test(j.company);
 
