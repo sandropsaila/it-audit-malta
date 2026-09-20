@@ -34,9 +34,15 @@ konnekt.com, jobmatchingpartner.com, italentplus.teamtailor.com, jobsinmalta.com
 - **Seniority variants:** Officer, Analyst, Associate, Senior, Manager, Head of.
 - **Screenshots with cut-off titles:** ask the user for the title rather than guessing.
 
+## No double listings (rule added Sep 2026)
+- Before adding any role, search `src/App.jsx` for the same employer. A re-titled or reposted role (e.g. Betsson "Technical Compliance Manager - Italy" vs "Technical Compliance Officer - Italy") is **one** listing: update the existing entry, keep the direct employer/ATS link, and do not add a second.
+- Same role seen on several sources (LinkedIn, agency, employer site) = one entry; prefer the employer or ATS link.
+- Screenshots often show the same job twice (e.g. once "Viewed", once promoted): add once.
+- `npm run build` runs `scripts/check-duplicates.js`: it **fails** on same company + title, and **warns** on same-company similar titles and shared job URLs. Review every warning by hand.
+
 ## Per-refresh checklist
 1. Ask for LinkedIn feed screenshots and add every relevant role.
 2. Re-check every employer already on the board, then run every query family above; run at least one search per watchlist employer group.
-3. Verify each posting (title, employer, location, date, still open); record a direct URL.
+3. Check for duplicates against existing entries, then verify each posting (title, employer, location, date, still open); record a direct URL.
 4. Set `added` to today so the red dot shows; update `LAST_UPDATED`.
 5. `CI=true npm run build`, push to `main`, confirm the Vercel deployment is READY.

@@ -154,6 +154,12 @@ const JOBS = [
   // 10) DIRECT ATS SEARCH: careers.ey.com (Msida), careers-vistaglobal.icims.com,
   //     job-boards.greenhouse.io/betsson, betssongroup.com/careers/available-jobs.
   // 11) SENIORITY VARIANTS: Officer, Analyst, Associate, Senior, Manager, Head of.
+  // 12) NO DOUBLE LISTINGS: before adding, search the JOBS array for the same
+  //     employer (re-titled reposts, e.g. Betsson "Technical Compliance Manager"
+  //     vs "Officer" - Italy, count as ONE role). Keep the entry with the direct
+  //     employer/ATS link and update it instead of adding a second. `npm run build`
+  //     runs scripts/check-duplicates.js (fails on same company+title, warns on
+  //     near-duplicates and shared job URLs).
   // ══════════════════════════════════════════════════════════════════════════
 
   // ── IT AUDIT ──────────────────────────────────────────────────────────────
@@ -340,20 +346,6 @@ const JOBS = [
     skills: ["IT Risk", "DORA", "ISO 27001", "NIST", "Cloud Security", "Cybersecurity", "Controls Framework"],
     source: "LinkedIn",
     url: "https://mt.linkedin.com/jobs/it-auditor-jobs",
-  },
-  {
-    category: "IT Audit",
-    title: "Junior Information Security GRC Executive",
-    company: "Insurance Company (via GRS Recruitment)",
-    location: "Malta",
-    type: "Full-time",
-    salary: null,
-    posted: "Active",
-    description:
-      "Leading insurance company in Malta seeking a Junior Information Security GRC (Governance, Risk & Control) Executive. Background in IT security and audit required. Involves IT risk assessments, control testing and compliance reporting within a regulated insurance environment.",
-    skills: ["GRC", "Information Security", "IT Audit", "Risk Assessment", "Control Testing", "Insurance", "Compliance"],
-    source: "GRS Recruitment",
-    url: "https://www.grsrecruitment.com/jobs-in-malta/",
   },
 
   {
@@ -706,20 +698,6 @@ const JOBS = [
   },
   {
     category: "External Audit",
-    title: "EY Malta – Assurance & Audit (Multiple Levels)",
-    company: "EY Malta",
-    location: "Malta",
-    type: "Full-time",
-    salary: null,
-    posted: "Ongoing",
-    description:
-      "EY Malta's Assurance Department is hiring across all levels. Responsibilities include managing audit strategies, executing complex audit procedures, using state-of-the-art diagnostic tools, coaching team members and developing long-term client relationships.",
-    skills: ["Assurance", "Audit Strategy", "Risk Diagnostics", "Client Management", "IT Controls", "IFRS"],
-    source: "EY Careers",
-    url: "https://www.ey.com/en_mt/careers/careers-ey-malta",
-  },
-  {
-    category: "External Audit",
     title: "IT Audit Role (findajob.mt listing)",
     company: "Confidential",
     location: "Malta",
@@ -998,21 +976,6 @@ const JOBS = [
     skills: ["ISO", "Management Systems", "Advisory", "Auditing"],
     source: "LinkedIn",
     url: "https://www.linkedin.com/jobs/search/?keywords=ISO+Advisor+%26+Auditor+Luke+Desira+Official&location=Malta",
-    added: "2026-09-20",
-  },
-  {
-    category: "GRC & ISO",
-    title: "Technical Compliance Officer – Italy",
-    company: "Betsson Group",
-    location: "Malta",
-    type: "Full-time",
-    salary: null,
-    posted: "Recent (LinkedIn)",
-    description:
-      "Technical Compliance Officer role for the Italian market at Betsson Group, spotted on LinkedIn (location and date were cut off in the screenshot; Betsson's Italy technical compliance roles are Malta-based). Open the listing to confirm details.",
-    skills: ["Technical Compliance", "iGaming", "Italy", "Regulatory"],
-    source: "LinkedIn",
-    url: "https://www.linkedin.com/jobs/search/?keywords=Technical+Compliance+Officer+Italy+Betsson+Group&location=Malta",
     added: "2026-09-20",
   },
   {
