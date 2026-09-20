@@ -180,6 +180,20 @@ const JOBS = [
   //     include_domains=[careerjet.com.mt] returns listing snapshots. Their relative
   //     ages are unreliable (cached), so treat them as LEADS ONLY and verify on the
   //     employer / recruiter / ATS page before adding.
+  //
+  // ── v2.3 ADDITIONS (Sep 2026, Lufthansa Technik Malta + Premier Capital missed) ──
+  // 16) SWEEP THE 250-EMPLOYER LIST (data/targeted-employers.tsv) EVERY REFRESH:
+  //     "<company> careers Malta" + one role-family query. Both missed employers
+  //     were on that list (#224, #247) but it was never used. Log each sweep;
+  //     never mark an employer "clear" without one. `node scripts/employer-coverage.js`
+  //     reports coverage on every build.
+  // 17) NEW VOCABULARY: grants, funding, EU funds, governance specialist, finance
+  //     compliance, internal control, risk & controls, information security
+  //     officer, ISMS, data protection officer, quality & compliance.
+  // 18) LOOK INSIDE DEPARTMENTS (Finance, Legal, IT, Quality) of non-finance
+  //     employers: aviation/MRO, QSR and retail, shipping, manufacturing.
+  // 19) LINKEDIN HIRING-MANAGER POSTS ARE VACANCIES ("We're hiring ..."). They are
+  //     not indexed: search "<employer> hiring <role>" and ask for screenshots.
   {
     category: "IT Audit",
     title: "IT Audit – Risk Advisory (Senior IT Auditor)",
@@ -1173,6 +1187,36 @@ const JOBS = [
     skills: ["Technical Compliance", "iGaming", "Hybrid"],
     source: "Pentasia",
     url: "https://www.pentasia.com/careers/technical-compliance-officer-europe-malta-38771-29099",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Governance, Compliance and Grants Specialist – Finance Department",
+    company: "Lufthansa Technik Malta",
+    location: "Luqa, Malta (On-site)",
+    type: "Full-time",
+    salary: null,
+    posted: "c. 13 Sep 2026 (1 week ago on LinkedIn)",
+    description:
+      "Governance, compliance and grants role sitting in the Finance Department of the Luqa-based aircraft MRO. Applications are managed off LinkedIn (36 clicked apply at time of capture).",
+    skills: ["Governance", "Compliance", "Grants", "Finance"],
+    source: "LinkedIn",
+    url: "https://www.linkedin.com/jobs/search/?keywords=Governance%20Compliance%20and%20Grants%20Specialist%20Lufthansa%20Technik%20Malta&location=Malta",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Information Security Officer",
+    company: "Premier Capital plc (McDonald's Licencee)",
+    location: "Marsa, Malta (On-site)",
+    type: "Full-time",
+    salary: null,
+    posted: "c. 18 Sep 2026 (2 days ago on LinkedIn)",
+    description:
+      "Devise and manage the Information Security Strategy and help maintain security measures across six markets (Estonia, Greece, Latvia, Lithuania, Malta, Romania; 205+ restaurants). Announced by the Director of IT.",
+    skills: ["Information Security", "ISMS", "Security Strategy", "Multi-market"],
+    source: "LinkedIn",
+    url: "https://www.linkedin.com/jobs/search/?keywords=Information%20Security%20Officer%20Premier%20Capital&location=Malta",
     added: "2026-09-20",
   },
 ];

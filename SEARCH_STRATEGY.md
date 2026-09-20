@@ -1,4 +1,4 @@
-# Search strategy (v2.2, Sep 2026)
+# Search strategy (v2.3, Sep 2026)
 
 Goal: never miss relevant Malta roles in IT Audit, Internal Audit, External Audit and GRC & ISO.
 
@@ -52,6 +52,23 @@ konnekt.com, jobmatchingpartner.com, italentplus.teamtailor.com, jobsinmalta.com
 - Regulator-side technical compliance roles (e.g. Heroix "Tech Compliance Analyst - iGaming": review of third-party audit outputs, system audits) are IT-audit-adjacent: keep them on the board.
 - Stale check: drop or skip postings older than ~2 months (e.g. Manpower's Senior Technical Compliance Analyst, Apr-May 2026, was skipped).
 
+## v2.3 additions (Sep 2026: Lufthansa Technik Malta + Premier Capital misses)
+**Missed roles:** Lufthansa Technik Malta "Governance, Compliance and Grants Specialist - Finance Department" (Luqa) and Premier Capital (McDonald's licencee) "Information Security Officer" (Marsa). Both employers were already on the 250-employer target list (#224, #247) but that list was never used as a search input.
+
+**Why they were missed**
+1. **Target list not operationalised.** `Targeted_Searches` (250 Malta employers) sat in the project files; the watchlist above only covered ~70 names in sectors already searched. Lufthansa Technik and Premier Capital were on neither.
+2. **Title-first, not employer-first.** Neither ad is indexed by web search (a LinkedIn-only ad; the Premier Capital one is a personal feed post by the Director of IT, not a job-board listing).
+3. **Vocabulary gaps.** "Grants" / "Funding" / "Governance ... Finance Department" titles; roles hidden inside Finance, Legal or IT departments of non-finance employers (aviation, food retail/QSR, shipping, manufacturing).
+4. **Sector blind spot.** Large non-financial employers (MRO, retail, QSR, manufacturing) have their own compliance, security and governance staff.
+
+**Rules**
+- **Sweep all 250 employers** in `data/targeted-employers.tsv` every refresh: `"<company> careers Malta"` plus one role-family query (compliance / governance / information security / risk / audit). Log employers swept, even when nothing is found. `node scripts/employer-coverage.js` (runs on build) reports how many have a listing.
+- **Tier the list:** Tier 1 (sweep every refresh): plcs, banks, insurers, telecoms, utilities, airports/aviation, iGaming, group HQs (#1-32, #87, #199-250). Tier 2 (every second refresh): retail, distribution, manufacturing (#33-198).
+- **New vocabulary:** grants, funding, EU funds, governance specialist, finance compliance, financial controls, internal control, risk & controls, information security officer, security officer, ISMS, data protection officer, quality & compliance, regulatory affairs.
+- **Department sweep:** for each employer look at Finance, Legal, IT and Quality/Safety vacancies, not only jobs titled audit/compliance.
+- **Feed posts count:** LinkedIn posts by hiring managers ("We're hiring...") are vacancies. Search `"<employer> hiring <role>"` and ask for screenshots.
+- **Never mark an employer "clear" without a logged sweep.**
+
 ## No double listings (rule added Sep 2026)
 - Before adding any role, search `src/App.jsx` for the same employer. A re-titled or reposted role (e.g. Betsson "Technical Compliance Manager - Italy" vs "Technical Compliance Officer - Italy") is **one** listing: update the existing entry, keep the direct employer/ATS link, and do not add a second.
 - Same role seen on several sources (LinkedIn, agency, employer site) = one entry; prefer the employer or ATS link.
@@ -60,7 +77,7 @@ konnekt.com, jobmatchingpartner.com, italentplus.teamtailor.com, jobsinmalta.com
 
 ## Per-refresh checklist
 1. Ask for LinkedIn feed screenshots and add every relevant role.
-2. Re-check every employer already on the board, then run every query family above; run at least one search per watchlist employer group.
+2. Sweep the 250-employer list (`data/targeted-employers.tsv`), re-check every employer already on the board, then run every query family above; run at least one search per watchlist employer group.
 3. Check for duplicates against existing entries, then verify each posting (title, employer, location, date, still open); record a direct URL.
 4. Set `added` to today so the red dot shows; update `LAST_UPDATED`.
 5. `CI=true npm run build`, push to `main`, confirm the Vercel deployment is READY.
