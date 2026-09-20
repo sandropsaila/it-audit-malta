@@ -1056,15 +1056,19 @@ const CAT_COLORS = {
 // A listing is "new" (red dot) for 14 days after its `added` date
 const isNewJob = (j) => j.added && Date.now() - new Date(j.added).getTime() < 14 * 24 * 60 * 60 * 1000;
 
-// Audit firms, accounting/professional-services firms and recruiters/intermediaries.
-// Matched on company name (or an explicit `employerType: "firm"` on a job). Anything else = "other industries".
-const FIRM_OR_RECRUITER_RE = new RegExp([
+// Employer-type filters. Matched on company name, or override with `employerType: "firm"` / `"recruiter"` on a job.
+// A listing can match both (e.g. an accounting firm advertised via a recruiter).
+const AUDIT_FIRM_RE = new RegExp([
   "deloitte", "kpmg", "pwc", "\\bey\\b", "\\bbdo\\b", "mazars", "uhy", "dfk", "gcb malta", "grant thornton", "broadwing",
   "audit firm", "audit & assurance firm", "audit, tax", "accounting firm", "advisory firm", "professional services",
-  "aims international", "manpower", "konnekt", "heroix", "spoton", "grs recruitment", "jobmatchingpartner", "italent",
-  "pentasia", "\\breed\\b", "outreach", "\\baccelerate\\b", "castille resources", "boston link", "link talent", "van kaizen", "archer it", "cross border talents", "ceek", "acca careers", "recruit", "\\(via ", "client confidential", "^confidential$",
 ].join("|"), "i");
-const isFirmOrRecruiter = (j) => j.employerType === "firm" || FIRM_OR_RECRUITER_RE.test(j.company);
+const RECRUITER_RE = new RegExp([
+  "aims international", "manpower", "konnekt", "heroix", "spoton", "grs recruitment", "jobmatchingpartner", "italent",
+  "pentasia", "\\breed\\b", "outreach", "\\baccelerate\\b", "castille resources", "boston link", "link talent", "van kaizen",
+  "archer it", "cross border talents", "ceek", "acca careers", "recruit", "\\(via ", "client confidential", "^confidential$",
+].join("|"), "i");
+const isAuditFirm = (j) => j.employerType === "firm" || AUDIT_FIRM_RE.test(j.company);
+const isRecruiter = (j) => j.employerType === "recruiter" || RECRUITER_RE.test(j.company);
 
 export default function App() {
   const [unlocked, setUnlocked] = useState(false);
@@ -1075,7 +1079,8 @@ export default function App() {
   const [sortBy, setSortBy]     = useState("default");
   const [showInfo, setShowInfo] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
-  const [hideFirms, setHideFirms] = useState(false);
+  const [hideAudit, setHideAudit] = useState(false);
+  const [hideRecruiters, setHideRecruiters] = useState(false);
 
   const formatStamp = (d) => {
     const date = d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
@@ -1089,7 +1094,7 @@ export default function App() {
     setSearch("");
     setCategory("All");
     setSource("All");
-    setHideFirms(false);
+    setHideAudit(false); setHideRecruiters(false);
     setSelected(null);
     setSortBy("default");
     setLastRefresh(formatStamp(new Date()));
@@ -1107,7 +1112,7 @@ export default function App() {
       j.company.toLowerCase().includes(q) ||
       j.location.toLowerCase().includes(q) ||
       j.skills.some((sk) => sk.toLowerCase().includes(q));
-    const matchEmployer = !hideFirms || !isFirmOrRecruiter(j);
+    const matchEmployer = (!hideAudit || !isAuditFirm(j)) && (!hideRecruiters || !isRecruiter(j));
     return matchCat && matchSrc && matchQ && matchEmployer;
   });
 
@@ -1301,7 +1306,7 @@ export default function App() {
           <button style={s.filterToggle} onClick={() => setShowFilters(!showFilters)}>
             <span style={s.filterIcon}>⚙</span>
             <span>Filters</span>
-            {(category !== "All" || source !== "All" || sortBy !== "default" || hideFirms) && (
+            {(category !== "All" || source !== "All" || sortBy !== "default" || hideAudit || hideRecruiters) && (
               <span style={s.filterDot} />
             )}
           </button>
@@ -1329,9 +1334,13 @@ export default function App() {
               <div style={s.filterSectionTitle}>Employer</div>
               <div style={s.filterChips}>
                 <button
-                  style={{ ...s.chip, ...(hideFirms ? s.chipActive : {}) }}
-                  onClick={() => { setHideFirms(!hideFirms); setSelected(null); }}
-                >{hideFirms ? "✓ " : ""}Exclude audit firms & recruiters</button>
+                  style={{ ...s.chip, ...(hideAudit ? s.chipActive : {}) }}
+                  onClick={() => { setHideAudit(!hideAudit); setSelected(null); }}
+                >{hideAudit ? "✓ " : ""}Exclude audit firms</button>
+                <button
+                  style={{ ...s.chip, ...(hideRecruiters ? s.chipActive : {}) }}
+                  onClick={() => { setHideRecruiters(!hideRecruiters); setSelected(null); }}
+                >{hideRecruiters ? "✓ " : ""}Exclude recruiters</button>
               </div>
             </div>
             <div style={s.filterSection}>
@@ -1358,7 +1367,7 @@ export default function App() {
             </div>
             <div style={s.filterFooter}>
               <span style={s.filterCount}>{filtered.length} result{filtered.length !== 1 ? "s" : ""}</span>
-              <button style={s.clearBtn} onClick={() => { setCategory("All"); setSource("All"); setHideFirms(false); setSortBy("default"); setSearch(""); setSelected(null); setShowFilters(false); }}>
+              <button style={s.clearBtn} onClick={() => { setCategory("All"); setSource("All"); setHideAudit(false); setHideRecruiters(false); setSortBy("default"); setSearch(""); setSelected(null); setShowFilters(false); }}>
                 ✕ Clear all
               </button>
               <button style={s.applyBtn} onClick={() => setShowFilters(false)}>
