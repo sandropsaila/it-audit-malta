@@ -1008,6 +1008,36 @@ const JOBS = [
     url: "https://careers.ey.com/ey/job/Msida-Audit-Manager-MSD-1751/1409717733/",
     added: "2026-09-20",
   },
+  {
+    category: "Internal Audit",
+    title: "Internal Auditor",
+    company: "Truevo",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "22 Aug 2026",
+    description:
+      "Internal Auditor at Truevo, a Malta-based payments company, assessing governance, risk management and internal controls. Seen on Jobatlas (22 Aug 2026); the original posting could not be opened, so confirm it is still open.",
+    skills: ["Internal Audit", "Internal Controls", "Risk Management", "Payments"],
+    source: "Jobatlas",
+    url: "https://www.linkedin.com/jobs/search/?keywords=Internal+Auditor+Truevo&location=Malta",
+    added: "2026-09-20",
+  },
+  {
+    category: "Internal Audit",
+    title: "Junior Internal Auditor",
+    company: "Malta Financial Services Authority (MFSA)",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "17 Sep 2026",
+    description:
+      "Junior Internal Auditor within the MFSA Internal Audit function, participating in risk-based audits under the annual audit plan. Seen on JobsinMalta (17 Sep 2026); the direct posting could not be opened, so check the MFSA careers page and confirm it is still open.",
+    skills: ["Internal Audit", "Risk-based Audit", "Regulator", "Junior"],
+    source: "JobsinMalta",
+    url: "https://careers.mfsa.mt/jobs",
+    added: "2026-09-20",
+  },
 ];
 
 const CATEGORIES = ["All", "IT Audit", "Internal Audit", "External Audit", "GRC & ISO"];
