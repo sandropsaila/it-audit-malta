@@ -926,12 +926,12 @@ const JOBS = [
     location: "San Ġiljan, Malta (Hybrid)",
     type: "Full-time",
     salary: null,
-    posted: "c. 13 Sep 2026",
+    posted: "c. 13 Sep 2026 (employer page shows \"Position closed\": confirm still open)",
     description:
       "Operational engine of Viber's DORA compliance programme: owns the DORA governance framework, ICT and third-party inventories, evidence repository and BCM documentation, coordinates internal/external audits and regulatory inspections, and prepares quarterly Board reporting on operational resilience and ICT risk. Senior, permanent role.",
     skills: ["DORA", "ICT Governance", "Operational Resilience", "Third-party Risk", "BCM", "Audit Coordination"],
-    source: "WeAreDevelopers",
-    url: "https://www.wearedevelopers.com/en/jobs/ext/6511759/ict-governance-manager",
+    source: "Viber careers",
+    url: "https://www.viber.com/en/careers/ict-governance-resilience-manager/",
     added: "2026-09-20",
   },
   {
