@@ -989,10 +989,10 @@ const JOBS = [
     salary: null,
     posted: "c. Aug 2026",
     description:
-      "ISO Advisor & Auditor vacancy at Luke Desira Official (management systems specialists), spotted on LinkedIn with Easy Apply. Listed about a month ago, so confirm it is still open.",
+      "ISO Advisor & Auditor vacancy at Luke Desira Official (management systems specialists), spotted on LinkedIn with Easy Apply. Link goes to the company's LinkedIn jobs tab (the linked search was not resolving). Listed about a month ago, so confirm it is still open.",
     skills: ["ISO", "Management Systems", "Advisory", "Auditing"],
     source: "LinkedIn",
-    url: "https://www.linkedin.com/jobs/search/?keywords=ISO+Advisor+%26+Auditor+Luke+Desira+Official&location=Malta",
+    url: "https://www.linkedin.com/company/82977049/jobs/",
     added: "2026-09-20",
   },
   {
