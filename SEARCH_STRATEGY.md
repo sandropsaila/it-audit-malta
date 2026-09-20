@@ -26,9 +26,17 @@ Goal: never miss relevant Malta roles in IT Audit, Internal Audit, External Audi
 ## Boards
 konnekt.com, jobmatchingpartner.com, italentplus.teamtailor.com, jobsinmalta.com, keepmeposted.com.mt, jobhound.mt, muovo.eu, findajob.mt, jobsplus.gov.mt, jobs.accaglobal.com, wearedevelopers.com, swooped.co, mt.linkedin.com/jobs
 
+## v2.1 additions (second LinkedIn screenshot)
+- **Re-check every employer already on the board** each refresh. A new Vista "Senior Internal Auditor" was missed because only the older "Internal Auditor" was tracked.
+- **ISO / management-systems employers:** Luke Desira, STEP Enterprises, Certification Malta, BSI, TUV, SGS, Bureau Veritas, DNV, NQA, Kiwa. Titles: ISO Advisor & Auditor, ISO Systems Advisor, ISO Compliance Manager, Lead Auditor, Quality / Management Systems Auditor.
+- **Non-finance sectors:** aviation (Vista Global, Luqa), shipping, pharma, telecoms, public sector (recruitment.gov.mt, MITA).
+- **Direct ATS pages that index well:** careers.ey.com (Msida), careers-vistaglobal.icims.com, job-boards.greenhouse.io/betsson, betssongroup.com/careers/available-jobs.
+- **Seniority variants:** Officer, Analyst, Associate, Senior, Manager, Head of.
+- **Screenshots with cut-off titles:** ask the user for the title rather than guessing.
+
 ## Per-refresh checklist
 1. Ask for LinkedIn feed screenshots and add every relevant role.
-2. Run every query family above; run at least one search per watchlist employer group.
+2. Re-check every employer already on the board, then run every query family above; run at least one search per watchlist employer group.
 3. Verify each posting (title, employer, location, date, still open); record a direct URL.
 4. Set `added` to today so the red dot shows; update `LAST_UPDATED`.
 5. `CI=true npm run build`, push to `main`, confirm the Vercel deployment is READY.

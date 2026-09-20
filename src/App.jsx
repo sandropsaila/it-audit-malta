@@ -140,6 +140,20 @@ const JOBS = [
   // 6) VERIFY BEFORE ADDING: open the posting, confirm title, employer, location,
   //    posted date (or "c." approx.), and that it is still open. Prefer a direct
   //    URL; fall back to a LinkedIn search link only if none exists.
+  //
+  // ── v2.1 ADDITIONS (Sep 2026, second LinkedIn screenshot) ──
+  // 7) RE-CHECK EVERY EMPLOYER ALREADY ON THE BOARD each refresh (a new Vista
+  //    "Senior Internal Auditor" was missed because only the old "Internal
+  //    Auditor" was tracked). Search "<employer> <role family> Malta".
+  // 8) ISO / MANAGEMENT-SYSTEMS EMPLOYERS: Luke Desira, STEP Enterprises,
+  //    Certification Malta, BSI, TUV, SGS, Bureau Veritas, DNV, NQA, Kiwa.
+  //    Titles: "ISO Advisor & Auditor", "ISO Systems Advisor", "ISO Compliance
+  //    Manager", "Lead Auditor", "Quality/Management Systems Auditor".
+  // 9) NON-FINANCE SECTORS: aviation (Vista Global, Luqa), shipping, pharma,
+  //    telecoms, public sector (recruitment.gov.mt, MITA).
+  // 10) DIRECT ATS SEARCH: careers.ey.com (Msida), careers-vistaglobal.icims.com,
+  //     job-boards.greenhouse.io/betsson, betssongroup.com/careers/available-jobs.
+  // 11) SENIORITY VARIANTS: Officer, Analyst, Associate, Senior, Manager, Head of.
   // ══════════════════════════════════════════════════════════════════════════
 
   // ── IT AUDIT ──────────────────────────────────────────────────────────────
@@ -954,6 +968,81 @@ const JOBS = [
     skills: ["ICT GRC", "DORA", "NIS2", "EU AI Act", "ITIL", "COBIT", "Third-party Risk"],
     source: "Multitude Careers",
     url: "https://swooped.co/job-postings/ict-grc-manager-gzira-multitude-d8831",
+    added: "2026-09-20",
+  },
+  {
+    category: "Internal Audit",
+    title: "Senior Internal Auditor",
+    company: "Vista (Vista Global)",
+    location: "Luqa, Malta (Hybrid)",
+    type: "Full-time",
+    salary: null,
+    posted: "c. 16 Sep 2026",
+    description:
+      "Senior Internal Auditor vacancy at Vista in Luqa, spotted on LinkedIn (a separate posting from the Internal Auditor role already listed). Open the listing for full responsibilities and requirements.",
+    skills: ["Internal Audit", "Senior", "Aviation"],
+    source: "LinkedIn",
+    url: "https://www.linkedin.com/jobs/search/?keywords=Senior+Internal+Auditor+Vista&location=Malta",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "ISO Advisor & Auditor",
+    company: "Luke Desira Official",
+    location: "Valletta, Malta (Hybrid)",
+    type: "Full-time",
+    salary: null,
+    posted: "c. Aug 2026",
+    description:
+      "ISO Advisor & Auditor vacancy at Luke Desira Official (management systems specialists), spotted on LinkedIn with Easy Apply. Listed about a month ago, so confirm it is still open.",
+    skills: ["ISO", "Management Systems", "Advisory", "Auditing"],
+    source: "LinkedIn",
+    url: "https://www.linkedin.com/jobs/search/?keywords=ISO+Advisor+%26+Auditor+Luke+Desira+Official&location=Malta",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Technical Compliance Officer – Italy",
+    company: "Betsson Group",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "Recent (LinkedIn)",
+    description:
+      "Technical Compliance Officer role for the Italian market at Betsson Group, spotted on LinkedIn (location and date were cut off in the screenshot; Betsson's Italy technical compliance roles are Malta-based). Open the listing to confirm details.",
+    skills: ["Technical Compliance", "iGaming", "Italy", "Regulatory"],
+    source: "LinkedIn",
+    url: "https://www.linkedin.com/jobs/search/?keywords=Technical+Compliance+Officer+Italy+Betsson+Group&location=Malta",
+    added: "2026-09-20",
+  },
+  {
+    category: "External Audit",
+    title: "Senior Audit Manager",
+    company: "EY Malta",
+    location: "Msida, Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "29 Jul 2026",
+    description:
+      "Senior Audit Manager in the EY Malta Assurance Department, delivering audit and advisory services to a portfolio of clients. Posted on EY's careers site; confirm it is still open.",
+    skills: ["External Audit", "Assurance", "Management", "EY"],
+    source: "EY Careers",
+    url: "https://careers.ey.com/ey/job/Msida-Senior-Audit-Manager-MSD-1751/1409723733/",
+    added: "2026-09-20",
+  },
+  {
+    category: "External Audit",
+    title: "Audit Manager",
+    company: "EY Malta",
+    location: "Msida, Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "30 Jun 2026",
+    description:
+      "Audit Manager in the EY Malta Assurance Department, delivering audit and advisory services to a portfolio of clients. Posted on EY's careers site about 2.5 months ago; confirm it is still open.",
+    skills: ["External Audit", "Assurance", "Management", "EY"],
+    source: "EY Careers",
+    url: "https://careers.ey.com/ey/job/Msida-Audit-Manager-MSD-1751/1409717733/",
     added: "2026-09-20",
   },
 ];
