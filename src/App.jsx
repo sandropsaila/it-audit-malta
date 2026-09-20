@@ -119,6 +119,27 @@ const JOBS = [
   //   jobs.accaglobal.com/jobs/malta/audit/
   //   keepmeposted.com.mt + jobsinmalta.com + findajob.mt
   //   jobhound.mt + muovo.eu + jobsplus.gov.mt
+  //
+  // ── v2 ADDITIONS (Sep 2026) — added after LinkedIn-feed roles were missed ──
+  // 1) SEARCH BY EMPLOYER, NOT ONLY BY TITLE. Run "<company> careers Malta"
+  //    for the watchlist in SEARCH_STRATEGY.md (iGaming, fintech, banks, Big 4,
+  //    mid-tier, regulators). Employer career pages and ATS boards
+  //    (betssongroup.com/careers, job-boards.greenhouse.io/*, teamtailor) index
+  //    well and carry the exact posting.
+  // 2) NEW ROLE VOCABULARY: DORA, NIS2, ICT risk, ICT governance, operational
+  //    resilience, third-party risk (TPSP), ISO 27001, ISO 22301, ISO 42001,
+  //    technical compliance, regulatory compliance, MiCA, EU AI Act, CRA,
+  //    business continuity, information security officer / CISO, GRC.
+  // 3) TITLE VARIANTS: "Internal Audit Officer/Manager/Analyst", "Head of
+  //    Internal Audit", "Technical Compliance Manager", "ICT GRC Manager",
+  //    "Governance, Risk and Compliance Manager".
+  // 4) MORE BOARDS: konnekt.com, jobmatchingpartner.com, italentplus (teamtailor),
+  //    wearedevelopers.com, swooped.co, jobs.accaglobal.com, ACCA Careers.
+  // 5) LINKEDIN: not machine-searchable. Ask for a screenshot of the LinkedIn
+  //    Jobs feed / saved searches each refresh and add every relevant role.
+  // 6) VERIFY BEFORE ADDING: open the posting, confirm title, employer, location,
+  //    posted date (or "c." approx.), and that it is still open. Prefer a direct
+  //    URL; fall back to a LinkedIn search link only if none exists.
   // ══════════════════════════════════════════════════════════════════════════
 
   // ── IT AUDIT ──────────────────────────────────────────────────────────────
@@ -884,10 +905,10 @@ const JOBS = [
     salary: null,
     posted: "c. 13 Sep 2026",
     description:
-      "ICT Governance & Resilience Manager vacancy at Rakuten Viber, spotted on LinkedIn. Open the listing for full responsibilities and requirements.",
-    skills: ["ICT Governance", "Resilience", "GRC"],
-    source: "LinkedIn",
-    url: "https://www.linkedin.com/jobs/search/?keywords=ICT+Governance+%26+Resilience+Manager+Rakuten+Viber&location=Malta",
+      "Operational engine of Viber's DORA compliance programme: owns the DORA governance framework, ICT and third-party inventories, evidence repository and BCM documentation, coordinates internal/external audits and regulatory inspections, and prepares quarterly Board reporting on operational resilience and ICT risk. Senior, permanent role.",
+    skills: ["DORA", "ICT Governance", "Operational Resilience", "Third-party Risk", "BCM", "Audit Coordination"],
+    source: "WeAreDevelopers",
+    url: "https://www.wearedevelopers.com/en/jobs/ext/6511759/ict-governance-manager",
     added: "2026-09-20",
   },
   {
@@ -918,6 +939,21 @@ const JOBS = [
     skills: ["GRC", "Governance", "Risk", "Compliance"],
     source: "LinkedIn",
     url: "https://www.linkedin.com/jobs/search/?keywords=Manager+%E2%80%93+Governance%2C+Risk+and+Compliance+ACCA+Careers&location=Malta",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "ICT GRC Manager",
+    company: "Multitude",
+    location: "Gżira, Malta (Hybrid)",
+    type: "Full-time",
+    salary: null,
+    posted: "19 Jul 2026",
+    description:
+      "Owns the ICT governance framework and ICT risk management, translating DORA, NIS2, CRA and EU AI Act requirements into evidence-ready controls. Coordinates internal/external ICT audits, leads AI governance and third-party risk, and reports KPIs/KRIs. Posted about two months ago, so confirm it is still open.",
+    skills: ["ICT GRC", "DORA", "NIS2", "EU AI Act", "ITIL", "COBIT", "Third-party Risk"],
+    source: "Multitude Careers",
+    url: "https://swooped.co/job-postings/ict-grc-manager-gzira-multitude-d8831",
     added: "2026-09-20",
   },
 ];
