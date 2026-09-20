@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LAST_UPDATED = "12 May 2026";
+const LAST_UPDATED = "20 Sep 2026";
 
 // Password stored as SHA-256 hash of "1122" — never stored as plain text
 
@@ -755,9 +755,99 @@ const JOBS = [
     source: "GRS Recruitment",
     url: "https://www.grsrecruitment.com/jobs-in-malta/",
   },
+  {
+    category: "Internal Audit",
+    title: "Internal Audit Manager",
+    company: "Growing advisory firm (via JobMatchingPartner)",
+    location: "Birkirkara, Malta (Hybrid)",
+    type: "Full-time",
+    salary: "€42,000 – €60,000/yr",
+    posted: "19 Aug 2026",
+    description:
+      "Leads internal audit engagements from planning to follow-up and helps grow the firm's internal audit practice, serving payments, e-money and crypto clients. 5+ years of internal audit experience required; MFSA-regulated entity experience is a strong plus.",
+    skills: ["Internal Audit", "IIA Standards", "MFSA", "Payments", "Crypto", "Risk-based Audit"],
+    source: "JobMatchingPartner",
+    url: "https://www.jobmatchingpartner.com/jobs/8238936-internal-audit-manager",
+    added: "2026-09-20",
+  },
+  {
+    category: "Internal Audit",
+    title: "Internal Auditor",
+    company: "Professional services organisation (via iTalent PLUS)",
+    location: "Malta (Hybrid)",
+    type: "Full-time",
+    salary: null,
+    posted: "16 Sep 2026",
+    description:
+      "Delivers risk-based internal audit assignments across a diverse client portfolio, covering governance, risk management and internal controls. 3+ years of internal audit or assurance experience; CIA, CISA, CPA or ACCA an advantage.",
+    skills: ["Internal Audit", "Internal Controls", "Risk Assessment", "CIA", "CISA", "ACCA"],
+    source: "iTalent PLUS",
+    url: "https://italentplus.teamtailor.com/jobs/8390053-internal-auditor",
+    added: "2026-09-20",
+  },
+  {
+    category: "External Audit",
+    title: "Audit Manager",
+    company: "International audit, tax & advisory firm (via JobMatchingPartner)",
+    location: "Żebbuġ, Malta (Hybrid)",
+    type: "Full-time",
+    salary: "€35,000 – €40,000/yr",
+    posted: "2 Sep 2026",
+    description:
+      "Leads and reviews external audit engagements and manages a client portfolio. Fully qualified accountant with 5+ years of audit experience in Malta and Maltese/English fluency required; iGaming or financial services audit experience preferred. Malta-based candidates only.",
+    skills: ["External Audit", "ACCA", "IFRS", "iGaming", "Financial Services", "Team Leadership"],
+    source: "JobMatchingPartner",
+    url: "https://www.jobmatchingpartner.com/jobs/8306449-audit-manager",
+    added: "2026-09-20",
+  },
+  {
+    category: "External Audit",
+    title: "Junior Auditor",
+    company: "Audit & assurance firm (via JobMatchingPartner)",
+    location: "Birkirkara, Malta (Hybrid)",
+    type: "Full-time",
+    salary: "€38,000 – €40,000/yr",
+    posted: "17 Sep 2026",
+    description:
+      "Supports statutory external audits under ISA for clients including international financial services companies. Accounting degree, part-qualified ACCA and 1–2 years of audit experience in Malta; Maltese and English required. Malta-based candidates only.",
+    skills: ["External Audit", "ISA", "IFRS", "GAPSME", "ACCA"],
+    source: "JobMatchingPartner",
+    url: "https://www.jobmatchingpartner.com/jobs/8393817-junior-auditor",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Regulatory Compliance Consultant",
+    company: "International audit, tax & advisory firm (via JobMatchingPartner)",
+    location: "Żebbuġ, Malta (Hybrid)",
+    type: "Full-time",
+    salary: "€30,000 – €35,000/yr",
+    posted: "2 Sep 2026",
+    description:
+      "Helps define the firm's GRC approach and supports client projects on data protection, AML, sanctions and sector-specific regulation. MQF Level 6 in law, criminology, business or similar.",
+    skills: ["GRC", "Regulatory Compliance", "GDPR", "AML", "Sanctions"],
+    source: "JobMatchingPartner",
+    url: "https://www.jobmatchingpartner.com/jobs/8308115-regulatory-compliance-consultant",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Regulatory Compliance Manager",
+    company: "Professional services firm (via JobMatchingPartner)",
+    location: "Malta (Hybrid)",
+    type: "Full-time",
+    salary: "Up to €55,000/yr",
+    posted: "20 Aug 2026",
+    description:
+      "Leads client-facing GRC projects including compliance audits, gap assessments and regulatory projects, with strong GDPR knowledge. 5+ years in management, consulting or operational roles; MQF Level 6 in business, law or compliance.",
+    skills: ["GRC", "Compliance Audit", "Gap Assessment", "GDPR", "Project Management"],
+    source: "JobMatchingPartner",
+    url: "https://www.jobmatchingpartner.com/jobs/8249088-regulatory-compliance-manager",
+    added: "2026-09-20",
+  },
 ];
 
-const CATEGORIES = ["All", "IT Audit", "Internal Audit", "External Audit"];
+const CATEGORIES = ["All", "IT Audit", "Internal Audit", "External Audit", "GRC & ISO"];
 const ALL_SOURCES = [
   "All",
   ...new Set(JOBS.map((j) => j.source)),
@@ -767,7 +857,11 @@ const CAT_COLORS = {
   "IT Audit":       { bg: "rgba(37,99,235,0.08)",  border: "rgba(37,99,235,0.3)",  text: "#1d4ed8" },
   "Internal Audit": { bg: "rgba(124,58,237,0.08)", border: "rgba(124,58,237,0.3)", text: "#6d28d9" },
   "External Audit": { bg: "rgba(5,150,105,0.08)",  border: "rgba(5,150,105,0.3)",  text: "#047857" },
+  "GRC & ISO":      { bg: "rgba(217,119,6,0.08)",  border: "rgba(217,119,6,0.3)",  text: "#b45309" },
 };
+
+// A listing is "new" (red dot) for 14 days after its `added` date
+const isNewJob = (j) => j.added && Date.now() - new Date(j.added).getTime() < 14 * 24 * 60 * 60 * 1000;
 
 export default function App() {
   const [unlocked, setUnlocked] = useState(false);
@@ -827,6 +921,7 @@ export default function App() {
     "IT Audit":       JOBS.filter((j) => j.category === "IT Audit").length,
     "Internal Audit": JOBS.filter((j) => j.category === "Internal Audit").length,
     "External Audit": JOBS.filter((j) => j.category === "External Audit").length,
+    "GRC & ISO":      JOBS.filter((j) => j.category === "GRC & ISO").length,
   };
 
   const withSalary = JOBS.filter(j => j.salary).length;
@@ -983,7 +1078,7 @@ export default function App() {
 
         {/* ── MARKET SUMMARY ── */}
         <div style={s.summBox}>
-          <strong style={{ color: "#0f172a" }}>📊 Market Snapshot:</strong> Malta's audit job market is active across all levels in May 2026.
+          <strong style={{ color: "#0f172a" }}>📊 Market Snapshot:</strong> Malta's audit job market is active across all levels in September 2026.
           <strong style={{ color: "#1d4ed8" }}> IT Audit</strong> demand is led by Deloitte, Forvis Mazars and SpotOn (iGaming & fintech).
           <strong style={{ color: "#6d28d9" }}> Internal Audit</strong> roles are open at MFSA, Vista Global, BDO and a crypto/MiCA fintech (€60–80k).
           <strong style={{ color: "#047857" }}> External Audit</strong> vacancies span entry to senior management (€20k–€100k) across EY, DFK, GCB, Broadwing and Konnekt.
@@ -1075,6 +1170,7 @@ export default function App() {
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
                       <span style={{ ...s.catPill, background: c.bg, border: `1px solid ${c.border}`, color: c.text }}>{job.category}</span>
                       <div style={s.jTitle}>{job.title}</div>
+                      {isNewJob(job) && <span title="Newly added" style={{ width: 9, height: 9, borderRadius: "50%", background: "#dc2626", display: "inline-block", flexShrink: 0 }} />}
                     </div>
                     <div style={s.jCo}>{job.company}</div>
                   </div>
