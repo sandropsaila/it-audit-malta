@@ -1056,6 +1056,16 @@ const CAT_COLORS = {
 // A listing is "new" (red dot) for 14 days after its `added` date
 const isNewJob = (j) => j.added && Date.now() - new Date(j.added).getTime() < 14 * 24 * 60 * 60 * 1000;
 
+// Audit firms, accounting/professional-services firms and recruiters/intermediaries.
+// Matched on company name (or an explicit `employerType: "firm"` on a job). Anything else = "other industries".
+const FIRM_OR_RECRUITER_RE = new RegExp([
+  "deloitte", "kpmg", "pwc", "\\bey\\b", "\\bbdo\\b", "mazars", "uhy", "dfk", "gcb malta", "grant thornton", "broadwing",
+  "audit firm", "audit & assurance firm", "audit, tax", "accounting firm", "advisory firm", "professional services",
+  "aims international", "manpower", "konnekt", "heroix", "spoton", "grs recruitment", "jobmatchingpartner", "italent",
+  "acca careers", "recruit", "\\(via ", "client confidential", "^confidential$",
+].join("|"), "i");
+const isFirmOrRecruiter = (j) => j.employerType === "firm" || FIRM_OR_RECRUITER_RE.test(j.company);
+
 export default function App() {
   const [unlocked, setUnlocked] = useState(false);
   const [category, setCategory] = useState("All");
@@ -1065,6 +1075,7 @@ export default function App() {
   const [sortBy, setSortBy]     = useState("default");
   const [showInfo, setShowInfo] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [hideFirms, setHideFirms] = useState(false);
 
   const formatStamp = (d) => {
     const date = d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
@@ -1078,6 +1089,7 @@ export default function App() {
     setSearch("");
     setCategory("All");
     setSource("All");
+    setHideFirms(false);
     setSelected(null);
     setSortBy("default");
     setLastRefresh(formatStamp(new Date()));
@@ -1095,7 +1107,8 @@ export default function App() {
       j.company.toLowerCase().includes(q) ||
       j.location.toLowerCase().includes(q) ||
       j.skills.some((sk) => sk.toLowerCase().includes(q));
-    return matchCat && matchSrc && matchQ;
+    const matchEmployer = !hideFirms || !isFirmOrRecruiter(j);
+    return matchCat && matchSrc && matchQ && matchEmployer;
   });
 
   // Sort
@@ -1288,7 +1301,7 @@ export default function App() {
           <button style={s.filterToggle} onClick={() => setShowFilters(!showFilters)}>
             <span style={s.filterIcon}>⚙</span>
             <span>Filters</span>
-            {(category !== "All" || source !== "All" || sortBy !== "default") && (
+            {(category !== "All" || source !== "All" || sortBy !== "default" || hideFirms) && (
               <span style={s.filterDot} />
             )}
           </button>
@@ -1310,6 +1323,15 @@ export default function App() {
                     >{cat}</button>
                   );
                 })}
+              </div>
+            </div>
+            <div style={s.filterSection}>
+              <div style={s.filterSectionTitle}>Employer</div>
+              <div style={s.filterChips}>
+                <button
+                  style={{ ...s.chip, ...(hideFirms ? s.chipActive : {}) }}
+                  onClick={() => { setHideFirms(!hideFirms); setSelected(null); }}
+                >{hideFirms ? "✓ " : ""}Exclude audit firms & recruiters</button>
               </div>
             </div>
             <div style={s.filterSection}>
@@ -1336,7 +1358,7 @@ export default function App() {
             </div>
             <div style={s.filterFooter}>
               <span style={s.filterCount}>{filtered.length} result{filtered.length !== 1 ? "s" : ""}</span>
-              <button style={s.clearBtn} onClick={() => { setCategory("All"); setSource("All"); setSortBy("default"); setSearch(""); setSelected(null); setShowFilters(false); }}>
+              <button style={s.clearBtn} onClick={() => { setCategory("All"); setSource("All"); setHideFirms(false); setSortBy("default"); setSearch(""); setSelected(null); setShowFilters(false); }}>
                 ✕ Clear all
               </button>
               <button style={s.applyBtn} onClick={() => setShowFilters(false)}>
