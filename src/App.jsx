@@ -176,8 +176,10 @@ const JOBS = [
   //     Evolution, Superbet, Betway/Super Group, Videoslots, Greentube, Yggdrasil,
   //     Playtech, Entain, Flutter. Aggregators seen: anyreality.jobboardly.com
   //     (LeoVegas/Kaizen/Betway mirror), builtin.com, startup.jobs, jobhound.mt.
-  // 15) CAREERJET IS BOT-BLOCKED for automated fetches; treat its snippets (and
-  //     AI summaries citing it) as leads only and verify on the employer/ATS page.
+  // 15) CAREERJET: direct fetch/extract is bot-blocked, but Nimble search with
+  //     include_domains=[careerjet.com.mt] returns listing snapshots. Their relative
+  //     ages are unreliable (cached), so treat them as LEADS ONLY and verify on the
+  //     employer / recruiter / ATS page before adding.
   {
     category: "IT Audit",
     title: "IT Audit – Risk Advisory (Senior IT Auditor)",
@@ -1060,10 +1062,10 @@ const JOBS = [
     location: "Malta (Hybrid)",
     type: "Full-time",
     salary: "€31,000 – €36,000/yr",
-    posted: "c. 4 Sep 2026",
+    posted: "17 Apr 2026 (still active; apply by 3 Oct 2026)",
     description:
-      "Entry-level technical compliance analyst role for an iGaming client, advertised by Heroix on Jobhound.mt (application deadline 3 Oct 2026). Open the listing for the full duties.",
-    skills: ["Technical Compliance", "iGaming", "Entry level"],
+      "Junior technical compliance analyst role at a client that oversees the gaming industry (a regulator-type body), advertised by Heroix. Reviews licence-holder technical submissions (architecture, security controls), supports compliance assurance including review of third-party audit outputs, inspections and system audits, and tracks non-conformities. Prior IT or financial audit exposure is advantageous.",
+    skills: ["Technical Compliance", "System Audits", "Third-party Audit Review", "Regulator", "Entry level"],
     source: "Jobhound.mt",
     url: "https://jobhound.mt/jobs/tech-compliance-analyst-igaming-10201",
     added: "2026-09-20",
@@ -1120,7 +1122,7 @@ const JOBS = [
     location: "St. Julian's, Malta (On-site)",
     type: "Full-time",
     salary: null,
-    posted: "c. 20 Sep 2026",
+    posted: "Sep 2026 (open; Evolution reposts these roles often)",
     description:
       "Technical compliance role for European markets: reviews technical requirements, advises the business, works with testing facilities and ensures games are certified and approved on time. Junior level.",
     skills: ["Technical Compliance", "iGaming", "Game Certification", "Test Labs"],
@@ -1141,6 +1143,36 @@ const JOBS = [
     skills: ["Technical Compliance", "Sports Betting", "Regulatory", "Requirements"],
     source: "Superbet Careers",
     url: "https://job-boards.eu.greenhouse.io/superbet/jobs/4721097101",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Senior Risk Officer (Information Security Risk / ISO 27001)",
+    company: "LeoVegas Group",
+    location: "Malta (On-site)",
+    type: "Full-time",
+    salary: null,
+    posted: "Open (undated on LeoVegas board)",
+    description:
+      "Enterprise risk role with an initial focus on information security risk management (ISO 27001): leads risk assessments for new initiatives, maintains the risk framework and acts as administrator and technology lead for the Group's GRC software.",
+    skills: ["Information Security Risk", "ISO 27001", "GRC Software", "Enterprise Risk"],
+    source: "LeoVegas Careers",
+    url: "https://anyreality.jobboardly.com/jobs/senior-risk-officer-6741de22",
+    added: "2026-09-20",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Technical Compliance Officer",
+    company: "Pentasia (client confidential)",
+    location: "Sliema, Malta (Hybrid)",
+    type: "Full-time",
+    salary: null,
+    posted: "Open (undated on Pentasia)",
+    description:
+      "Technical Compliance Team role at an iGaming business, advertised by Pentasia. Hybrid in Sliema; requires strong English, Jira and MS Office / Google Suite, and occasional travel.",
+    skills: ["Technical Compliance", "iGaming", "Hybrid"],
+    source: "Pentasia",
+    url: "https://www.pentasia.com/careers/technical-compliance-officer-europe-malta-38771-29099",
     added: "2026-09-20",
   },
 ];
@@ -1170,7 +1202,7 @@ const AUDIT_FIRM_RE = new RegExp([
 const RECRUITER_RE = new RegExp([
   "aims international", "manpower", "konnekt", "heroix", "spoton", "grs recruitment", "jobmatchingpartner", "italent",
   "pentasia", "\\breed\\b", "outreach", "\\baccelerate\\b", "castille resources", "boston link", "link talent", "van kaizen",
-  "archer it", "cross border talents", "ceek", "bettingjobs", "acca careers", "recruit", "\\(via ", "client confidential", "^confidential$",
+  "archer it", "cross border talents", "ceek", "bettingjobs", "hireroo", "talentxd", "betting connections", "bet on talent", "nordic jobs", "r77", "vacancycentre", "acca careers", "recruit", "\\(via ", "client confidential", "^confidential$",
 ].join("|"), "i");
 const isAuditFirm = (j) => j.employerType === "firm" || AUDIT_FIRM_RE.test(j.company);
 const isRecruiter = (j) => j.employerType === "recruiter" || RECRUITER_RE.test(j.company);

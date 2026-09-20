@@ -47,7 +47,9 @@ konnekt.com, jobmatchingpartner.com, italentplus.teamtailor.com, jobsinmalta.com
 - Add these title variants to the GRC & ISO family: Tech / Technical Compliance Analyst, Specialist, Officer, Manager; Compliance Assurance; Gaming Compliance; Game / RNG certification; Security Governance Specialist; ISMS Manager; Vendor / Third-Party Risk; Game Integrity.
 - **Per-employer ATS sweep** every refresh for iGaming: LeoVegas, Kaizen (Betano), Betsson (job-boards.greenhouse.io/betsson, Legal department), Evolution, Superbet (job-boards.eu.greenhouse.io/superbet), Betway/Super Group, Videoslots, Greentube, Yggdrasil, Playtech, Entain, Flutter.
 - Extra sources: builtin.com, startup.jobs, anyreality.jobboardly.com, jobhound.mt catalogues. Treat Careerjet snippets (and AI summaries that cite them) as **leads only**: verify on the employer/ATS page before adding.
-- Recruiters: add BettingJobs (Sliema) to the recruiter list and the filter.
+- Recruiters: add BettingJobs (Sliema), Hireroo / TalentXD (merged iGaming recruiters), Betting Connections, Bet On Talent, Nordic Jobs Worldwide, R77 Global, VacancyCentre, Crossroads Recruitment to the recruiter list and the board filter.
+- **Careerjet via Nimble:** `nimble_search` with `include_domains=["careerjet.com.mt"]` works (run sequentially, echo the `conversation_id`); `nimble_extract` on Careerjet is blocked. Query families: technical compliance, compliance igaming, information security / ISMS / GRC, ICT risk analyst, compliance consultant. Snapshot ages are unreliable (e.g. MFSA ICT-risk analyst ads shown as "1 month" had expired in June/July): **verify every lead on the employer, recruiter or ATS page**.
+- Regulator-side technical compliance roles (e.g. Heroix "Tech Compliance Analyst - iGaming": review of third-party audit outputs, system audits) are IT-audit-adjacent: keep them on the board.
 - Stale check: drop or skip postings older than ~2 months (e.g. Manpower's Senior Technical Compliance Analyst, Apr-May 2026, was skipped).
 
 ## No double listings (rule added Sep 2026)
