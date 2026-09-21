@@ -371,12 +371,12 @@ const JOBS = [
     location: "Malta / London (Hybrid)",
     type: "Full-time",
     salary: "£70,000 – £100,000/yr",
-    posted: "Active",
+    posted: "Unconfirmed",
     description:
-      "Compre Group, a fast-growing global reinsurance company, seeks its first IT Risk & Controls Manager to build and lead the IT/cybersecurity controls framework across the whole group (Malta, UK, Bermuda, Finland, Germany, US). Covers DORA compliance, cloud security, IT risk management and controls implementation. Reporting to the Head of Enterprise Transformation.",
+      "Compre Group, a fast-growing global reinsurance company, seeks its first IT Risk & Controls Manager to build and lead the IT/cybersecurity controls framework across the whole group (Malta, UK, Bermuda, Finland, Germany, US). Covers DORA compliance, cloud security, IT risk management and controls implementation. Reporting to the Head of Enterprise Transformation. Link goes to the Compre careers page; no vacancies were listed there on 21 Sep 2026, so confirm the role is still open.",
     skills: ["IT Risk", "DORA", "ISO 27001", "NIST", "Cloud Security", "Cybersecurity", "Controls Framework"],
     source: "LinkedIn",
-    url: "https://mt.linkedin.com/jobs/it-auditor-jobs",
+    url: "https://compregroup.pinpointhq.com/",
   },
 
   {
