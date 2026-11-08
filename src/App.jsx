@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LAST_UPDATED = "20 Sep 2026";
+const LAST_UPDATED = "8 Nov 2026";
 
 // Password stored as SHA-256 hash of "1122" — never stored as plain text
 
@@ -268,20 +268,6 @@ const JOBS = [
   // ── IT RISK / CONTROLS / GOVERNANCE / COMPLIANCE ─────────────────────────
   {
     category: "IT Audit",
-    title: "Manager – Governance, Risk & Compliance (GRC)",
-    company: "KPMG Malta",
-    location: "Malta",
-    type: "Full-time",
-    salary: null,
-    posted: "Active",
-    description:
-      "KPMG Malta Risk Consulting is hiring a GRC Manager. Leads engagements across Board Governance, Enterprise Risk Management, Regulatory Compliance, Process Design and Internal Audit. Strong knowledge of GRC frameworks, ERM, internal audit and Malta/EU regulatory frameworks required. Relocation package available.",
-    skills: ["GRC", "ERM", "Internal Audit", "Regulatory Compliance", "Internal Controls", "MFSA", "EU Regulations"],
-    source: "ACCA Careers",
-    url: "https://jobs.accaglobal.com/job/13830744/manager-governance-risk-and-compliance/",
-  },
-  {
-    category: "IT Audit",
     title: "IT Risk & Controls Manager",
     company: "Compre Group (Reinsurance)",
     location: "Malta / London (Hybrid)",
@@ -474,34 +460,6 @@ const JOBS = [
     skills: ["Financial Audit", "ACCA", "ISAs", "Financial Statements", "Microsoft Office", "Attention to Detail"],
     source: "Manpower Malta",
     url: "https://www.careers-page.com/manpower-malta/job/LR9R9336",
-  },
-  {
-    category: "External Audit",
-    title: "Internal Auditor (AML & Compliance Focus)",
-    company: "Konnekt (client confidential)",
-    location: "Malta",
-    type: "Full-time",
-    salary: null,
-    posted: "Mar 2026 – closes 30 Apr 2026",
-    description:
-      "Konnekt is recruiting an Internal Auditor specialising in AML and Compliance audits for MFSA or MGA supervised entities. Involves client-facing audit execution, preparing audit reports, ensuring AML Directive compliance and using AI-based tools to enhance audit efficiency. CIA/CPA/CISA preferred.",
-    skills: ["AML", "Compliance Audit", "MFSA", "MGA", "IIA Standards", "AI Tools", "Internal Audit", "CIA"],
-    source: "Konnekt",
-    url: "https://www.konnekt.com/jobs/accounting-jobs/internal-audtior-senior/84346",
-  },
-  {
-    category: "External Audit",
-    title: "Internal Auditor",
-    company: "Konnekt (client confidential)",
-    location: "Malta",
-    type: "Full-time",
-    salary: "€22,000 – €40,000/yr",
-    posted: "Active – closes 30 Apr 2026",
-    description:
-      "Konnekt is recruiting an Internal Auditor for a client in Malta. Requires strong understanding of risk management, internal controls and audit methodologies. CIA, CPA or CISA certification preferred. Responsibilities include audit execution, reporting and process improvement recommendations.",
-    skills: ["Internal Audit", "Risk Management", "Internal Controls", "CIA", "CISA", "CPA", "Audit Methodology"],
-    source: "Konnekt",
-    url: "https://www.konnekt.com/jobs/accounting-jobs/internal-auditor/86623",
   },
   {
     category: "External Audit",
@@ -825,21 +783,6 @@ const JOBS = [
   },
   {
     category: "GRC & ISO",
-    title: "Manager – Governance, Risk and Compliance",
-    company: "ACCA Careers",
-    location: "Malta",
-    type: "Full-time",
-    salary: null,
-    posted: "c. 18 Sep 2026",
-    description:
-      "Governance, Risk and Compliance Manager vacancy advertised via ACCA Careers, spotted on LinkedIn. Open the listing for full responsibilities and requirements.",
-    skills: ["GRC", "Governance", "Risk", "Compliance"],
-    source: "LinkedIn",
-    url: "https://www.linkedin.com/jobs/search/?keywords=Manager+%E2%80%93+Governance%2C+Risk+and+Compliance+ACCA+Careers&location=Malta",
-    added: "2026-09-20",
-  },
-  {
-    category: "GRC & ISO",
     title: "ICT GRC Manager",
     company: "Multitude",
     location: "Gżira, Malta (Hybrid)",
@@ -941,21 +884,6 @@ const JOBS = [
     skills: ["Internal Audit", "Risk-based Audit", "Regulator", "Junior"],
     source: "JobsinMalta",
     url: "https://careers.mfsa.mt/jobs",
-    added: "2026-09-20",
-  },
-  {
-    category: "GRC & ISO",
-    title: "Tech Compliance Analyst – iGaming",
-    company: "Heroix (client confidential)",
-    location: "Malta (Hybrid)",
-    type: "Full-time",
-    salary: "€31,000 – €36,000/yr",
-    posted: "17 Apr 2026 (still active; apply by 3 Oct 2026)",
-    description:
-      "Junior technical compliance analyst role at a client that oversees the gaming industry (a regulator-type body), advertised by Heroix. Reviews licence-holder technical submissions (architecture, security controls), supports compliance assurance including review of third-party audit outputs, inspections and system audits, and tracks non-conformities. Prior IT or financial audit exposure is advantageous.",
-    skills: ["Technical Compliance", "System Audits", "Third-party Audit Review", "Regulator", "Entry level"],
-    source: "Jobhound.mt",
-    url: "https://jobhound.mt/jobs/tech-compliance-analyst-igaming-10201",
     added: "2026-09-20",
   },
   {
@@ -1078,6 +1006,157 @@ const JOBS = [
     url: "https://www.linkedin.com/jobs/search/?keywords=Information%20Security%20Officer%20Premier%20Capital&location=Malta",
     added: "2026-09-20",
   },
+  // ── NOV 2026 UPDATE (verified on ACCA Careers / Konnekt / Jobsinmalta, 8 Nov 2026) ──
+  {
+    category: "Internal Audit",
+    title: "Manager – Internal Audit",
+    company: "KPMG Malta",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "16 Oct 2026 – closes 16 Nov 2026",
+    description:
+      "Leads internal audit engagements in KPMG's Risk Consulting Advisory Services team for banks, insurers, financial institutions and gaming companies. Requires ACCA/ACA/CIA and 5–7 years' internal audit experience, preferably in FS, insurance or gaming.",
+    skills: ["Internal Audit", "Risk Consulting", "Banking", "Insurance", "Gaming", "CIA"],
+    source: "ACCA Careers",
+    url: "https://jobs.accaglobal.com/job/14209066/manager-internal-audit/",
+    added: "2026-11-08",
+  },
+  {
+    category: "Internal Audit",
+    title: "Assistant Manager – Internal Audit, GRCS (RC)",
+    company: "KPMG Malta",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "29 Oct 2026 – closes 29 Nov 2026",
+    description:
+      "Plans and executes internal audits mainly for regulated clients (banks, insurers, gaming), supervising juniors and presenting results to management. 3+ years' internal audit experience; CIA or CISA preferred.",
+    skills: ["Internal Audit", "GRC", "CISA", "CIA", "Regulated Entities", "Reporting"],
+    source: "ACCA Careers",
+    url: "https://jobs.accaglobal.com/job/14238140/assistant-manager-internal-audit-grcs-rc-/",
+    added: "2026-11-08",
+  },
+  {
+    category: "Internal Audit",
+    title: "Advisor – Risk Consulting Advisory Services",
+    company: "KPMG Malta",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "26 Oct 2026 – closes 26 Nov 2026",
+    description:
+      "Supports governance, risk and compliance projects including internal audit and AML work. Degree in accountancy, financial services, forensic or law; ideally 1–2 years' experience.",
+    skills: ["Internal Audit", "GRC", "AML", "Risk", "Project Support"],
+    source: "ACCA Careers",
+    url: "https://jobs.accaglobal.com/job/14231366/advisor-risk-consulting-advisory-services/",
+    added: "2026-11-08",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Manager – Governance, Risk and Compliance",
+    company: "KPMG Malta",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "19 Oct 2026 – closes 19 Nov 2026",
+    description:
+      "Leads day-to-day delivery of GRC engagements in Risk Consulting Advisory Services, supervising juniors and presenting to client leadership. 5+ years' GRC experience with ERM, internal audit and Malta/EU regulatory knowledge.",
+    skills: ["GRC", "ERM", "Internal Audit", "Regulatory Compliance", "Malta/EU Regulation"],
+    source: "ACCA Careers",
+    url: "https://jobs.accaglobal.com/job/14216797/manager-governance-risk-and-compliance/",
+    added: "2026-11-08",
+  },
+  {
+    category: "GRC & ISO",
+    title: "Manager – Banking and FI, GRC",
+    company: "KPMG Malta",
+    location: "Pietà, Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "26 Oct 2026 – closes 26 Nov 2026",
+    description:
+      "GRC engagements for banks and financial institutions. 5+ years implementing and monitoring regulatory requirements in banking/FS, with knowledge of local and EU banking regulation, regulatory reporting and governance.",
+    skills: ["GRC", "Banking Regulation", "Regulatory Reporting", "Governance", "EU Regulation"],
+    source: "ACCA Careers",
+    url: "https://jobs.accaglobal.com/job/14231421/manager-banking-and-fi-grc/",
+    added: "2026-11-08",
+  },
+  {
+    category: "External Audit",
+    title: "Insurance Audit Manager",
+    company: "EY Malta",
+    location: "Msida, Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "3 Nov 2026 – closes 3 Dec 2026",
+    description:
+      "Oversees insurance-sector audit engagements from planning to completion and coaches junior staff. ACA/CA/ACCA, 2+ years at manager level leading external audits, solid IFRS; IFRS 17 an advantage.",
+    skills: ["External Audit", "Insurance", "IFRS", "IFRS 17", "ACCA", "Team Leadership"],
+    source: "ACCA Careers",
+    url: "https://jobs.accaglobal.com/job/14248932/insurance-audit-manager/",
+    added: "2026-11-08",
+  },
+  {
+    category: "External Audit",
+    title: "Audit Senior",
+    company: "KPMG Malta",
+    location: "Malta",
+    type: "Full-time",
+    salary: null,
+    posted: "26 Oct 2026 – closes 26 Nov 2026",
+    description:
+      "External audit senior role. Qualified accountant (CPA/ACCA/CA) with 2+ years' Big 4 external audit experience.",
+    skills: ["External Audit", "ACCA", "Big 4", "IFRS", "ISAs"],
+    source: "ACCA Careers",
+    url: "https://jobs.accaglobal.com/job/14231420/audit-senior/",
+    added: "2026-11-08",
+  },
+  {
+    category: "External Audit",
+    title: "Audit Senior",
+    company: "DFK Malta",
+    location: "Malta",
+    type: "Full-time",
+    salary: "Up to €35,000/yr",
+    posted: "29 Oct 2026 – closes 29 Nov 2026",
+    description:
+      "Audit senior role. Accountancy degree or ACCA/ACA (or advanced ACCA), 1+ year as audit senior in Malta and 3+ years' audit experience; GAPSME, IFRS and ISA knowledge.",
+    skills: ["External Audit", "GAPSME", "IFRS", "ISAs", "ACCA"],
+    source: "ACCA Careers",
+    url: "https://jobs.accaglobal.com/job/14238315/audit-senior/",
+    added: "2026-11-08",
+  },
+  {
+    category: "External Audit",
+    title: "Auditor",
+    company: "Boutique CSP (via Konnekt)",
+    location: "Central Malta (Hybrid)",
+    type: "Full-time",
+    salary: "€35,000 – €40,000/yr",
+    posted: "1 Sep 2026 – closes 30 Nov 2026",
+    description:
+      "Auditor for a boutique corporate service provider in financial services. 1–2 years' audit experience, strong ISA knowledge; ACCA (or near) an asset. English and Maltese; Malta-resident candidates only.",
+    skills: ["External Audit", "ISAs", "ACCA", "Financial Services", "CSP"],
+    source: "Konnekt",
+    url: "https://www.konnekt.com/jobs/accounting-jobs/auditor/91428",
+    added: "2026-11-08",
+  },
+  {
+    category: "External Audit",
+    title: "Audit Supervisor",
+    company: "Corporate Services Firm (via Konnekt)",
+    location: "Malta",
+    type: "Full-time",
+    salary: "€50,000 – €55,000/yr",
+    posted: "Posted Mar 2026 – closes 30 Nov 2026",
+    description:
+      "Plans and reviews statutory audits, leads the audit team, reviews working papers and financial statements and mentors juniors. 3–5 years' audit experience; degree or ACCA; strong IFRS and ISA knowledge.",
+    skills: ["Statutory Audit", "IFRS", "ISAs", "Team Supervision", "ACCA"],
+    source: "Jobsinmalta",
+    url: "https://jobsinmalta.com/job/accounting/audit-supervisor-100963",
+    added: "2026-11-08",
+  }
 ];
 
 const CATEGORIES = ["All", "IT Audit", "Internal Audit", "External Audit", "GRC & ISO"];
@@ -1329,7 +1408,7 @@ export default function App() {
 
         {/* ── MARKET SUMMARY ── */}
         <div style={s.summBox}>
-          <strong style={{ color: "#0f172a" }}>📊 Market Snapshot:</strong> Malta's audit job market is active across all levels in September 2026.
+          <strong style={{ color: "#0f172a" }}>📊 Market Snapshot:</strong> Malta's audit job market is active across all levels in November 2026.
           <strong style={{ color: "#1d4ed8" }}> IT Audit</strong> demand is led by Deloitte, Forvis Mazars and SpotOn (iGaming & fintech).
           <strong style={{ color: "#6d28d9" }}> Internal Audit</strong> roles are open at MFSA, Vista Global, BDO and a crypto/MiCA fintech (€60–80k).
           <strong style={{ color: "#047857" }}> External Audit</strong> vacancies span entry to senior management (€20k–€100k) across EY, DFK, GCB, Broadwing and Konnekt.
